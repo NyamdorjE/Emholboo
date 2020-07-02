@@ -1,0 +1,200 @@
+{% extends 'news/index_2.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<!-- search section -->
+<section class="search-section ss-other-page" style="text-align: left;">
+  <div class="container">
+    <div class="search-warp">
+      <div class="section-title text-white">
+        <h2><span>Хайлт хийх</span></h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <!-- search form -->
+          <form method="post" action="{% url 'courses:search_course' %}" class="intro-newslatter"> {% csrf_token %}
+            <input name="search" type="text" placeholder="">
+            <button type="submit" class="site-btn btn-dark">Хайх</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- search section end -->
+
+<div class="course-warp" >
+  <ul class="course-filter controls">
+    <li class="control active" data-filter="all">Анги доторх сэдэвүүд</li>
+  </ul>
+<div class="featured-courses">
+
+      <div class="featured-course course-item">
+        <div class="row">
+          {% for course in courses %}
+          <div class="col-lg-6 pb-4">
+            <div class="course-info">
+              <div class="course-text">
+                <h5>{{course.course}}</h5>
+                <a href="{% url 'courses:course_detail' course.slug %}"><h3 class="">{{course.title|capfirst}}</h3></a>
+                <p>{{course.description}}</p>
+                <div class="students"><a href="{% url 'courses:course_detail' course.slug %}" class="btn btn-primary">Хичээл үзэх</a></div>
+              </div>
+              <div class="course-author">
+                <div class="ca-pic set-bg" data-setbg="{{ request.user.profile.profile_pic.url }}"></div>
+                
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <style>
+  
+.course-warp {
+	max-width: 1559px;
+	padding: 0 15px;
+	margin: 0 auto -30px;
+}
+
+.course-item {
+	margin-bottom: 30px;
+}
+
+.course-item .course-thumb {
+	height: 270px;
+}
+
+.course-item .course-thumb .price {
+	font-size: 14px;
+	color: #fff;
+	font-weight: 600;
+	background: #e1691d;
+	display: inline-block;
+	padding: 13px 19px;
+	margin: 14px;
+}
+
+.course-item .course-info {
+	background: #edf4f6;
+}
+
+.course-item .course-info .course-text {
+	padding: 45px 33px 25px;
+}
+
+.course-item .course-info .course-text h5 {
+	margin-bottom: 5px;
+}
+
+.course-item .course-info .course-text .students {
+	font-size: 18px;
+	font-weight: 600;
+	color: #e1691d;
+}
+
+.course-item .course-info .course-author {
+	border-top: 1px solid #d4dee1;
+	padding: 14px 33px;
+	overflow: hidden;
+}
+
+.course-item .course-info .course-author .ca-pic {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	float: left;
+}
+
+.course-item .course-info .course-author p {
+	padding-left: 60px;
+	margin-bottom: 0;
+	padding-top: 7px;
+	font-weight: 600;
+}
+
+.course-item .course-info .course-author p span {
+	color: #e1691d;
+}
+
+.course-item.featured-course {
+	position: relative;
+	margin-bottom: 97px;
+}
+
+.course-item.featured-course:last-child {
+	margin-bottom: 30px;
+}
+
+.course-item.featured-course:nth-child(2n) .course-thumb {
+	left: auto;
+	right: 0;
+}
+
+.course-item.featured-course .course-thumb {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+.course-item.featured-course .fet-note {
+	display: inline-block;
+	background: #e1691d;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 15px;
+	margin-bottom: 20px;
+}
+
+.course-item.featured-course .course-info .course-text {
+	padding: 70px 33px 25px;
+}
+
+.course-item.featured-course .course-info .course-text h5 {
+	margin-bottom: 20px;
+}
+
+.course-item.featured-course .course-info .course-author {
+	border-top: none;
+	padding: 14px 33px 60px;
+}
+
+.course-filter {
+	list-style: none;
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 60px;
+}
+
+.course-filter li {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 600;
+	color: #474747;
+	padding: 12px 10px 5px;
+	margin: 0 10px;
+	border-bottom: 4px solid transparent;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.course-filter li.mixitup-control-active {
+	color: #e1691d;
+	border-bottom: 4px solid #e1691d;
+}
+
+  </style>
+{% endblock %}

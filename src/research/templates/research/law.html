@@ -1,0 +1,193 @@
+{% extends "news/index_2.html" %}
+{% load static %}
+{% block content %}
+
+        
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <h2 style="padding-left:250px;">Хууль тогтоомж</h2>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class='container-wide banner'>
+  <div class='container' style='text-align:center'>
+    <h1> </h1>
+  </div>
+</div>
+
+
+<div class='container'>
+  <div class='card'>
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <td class='left row-header'>Хууль тогтоомж</td>
+          
+        </tr>
+      </thead>
+      <tbody>
+      {% for law in law %}
+
+
+        {{ law.description }}
+        <tr>
+            <td class='left'> {{ law.title }}</td>
+            <td><span class="pdf-icon"></span></td>
+            <td>
+                <li>
+                    <a href="{{ law.pdf_file.url }}">{{ law.pdf_file.name }}</a>
+                    <small>({{ law.pdf_file.size|filesizeformat }}) - {{law.upload_date}}</small>
+                </li>
+            </td>
+         
+        </tr>
+        {% endfor %}
+
+    
+       
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<style>
+
+h1{
+  text-align: center;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Oxygen);
+$true-white: #fff;
+$white: #F5F5F5;
+$spacer: 1.5rem;
+$material-shadow: 0 2px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.12);
+$header: #616161;
+$sub-header: #757575;
+$grey-text: #9E9E9E;
+$grey: #BDBDBD;
+$main-color: #388E3C;
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.banner{
+  background: $main-color;
+  padding: 5rem $spacer 3rem;
+  margin-bottom: $spacer;
+  h1{
+    color: $white;
+  }
+}
+
+
+
+.card{
+  background: $true-white;
+  //padding: $spacer 0;
+  border-radius: .25rem;
+  box-shadow: $material-shadow;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse; 
+  margin-bottom: $spacer;
+  .row-header{
+    color: $grey-text;
+  }
+
+  tr{
+    border-bottom: 1px solid $grey;
+    &:last-child{
+      border: 0;
+    }
+  }
+  
+  td{
+    text-align: right;
+    padding: 1.4rem 1rem;
+
+  }
+  
+  .left{
+  text-align: left;
+  }
+}
+
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: rgba($main-color, 0.125);
+    }
+  }
+}
+
+.table-hover {
+  > tbody > tr:hover {
+       box-shadow: $material-shadow;
+  }
+}
+
+
+
+
+
+.pdf-icon {
+  font-size: 30%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 6em;
+  height: 8.5em;
+  background-color: #eee;
+  background-image: url("https://i.imgur.com/lZ5SgDE.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: 85% auto;
+  -moz-background-size: 85% auto;
+  background-size: 85% auto;
+  background-position: center 2em;
+  border-radius: 1px 2em 1px 1px;
+  border: 1px solid #ddd;
+}
+.pdf-icon:after {
+  content: 'PDF';
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 0.2em 0 0.1em;
+  color: #fff;
+  display: block;
+  position: absolute;
+  top: 0.7em;
+  left: -1.5em;
+  width: 3.4em;
+  height: auto;
+  background: #da2525;
+  border-radius: 2px;
+}
+
+</style>
+
+
+
+{% endblock %}

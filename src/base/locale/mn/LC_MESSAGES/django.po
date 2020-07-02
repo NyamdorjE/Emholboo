@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 10:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/base/admin.py:19 src/base/forms.py:13
+msgid "Username"
+msgstr "Нэвтрэх нэр"
+
+#: src/base/admin.py:24 src/base/forms.py:18
+msgid "Last name"
+msgstr "Овог"
+
+#: src/base/admin.py:29 src/base/forms.py:19
+msgid "First name"
+msgstr "Өөрийн нэр"
+
+#: src/base/admin.py:34 src/base/forms.py:15
+msgid "Email"
+msgstr "Имэйл"
+
+#: src/base/apps.py:7
+msgid "Base"
+msgstr "Үндсэн"
+
+#: src/base/forms.py:10
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: src/base/forms.py:11
+msgid "Username already exist."
+msgstr "Нэвтрэх нэр үүссэн байна"
+
+#: src/base/forms.py:21
+msgid "Password"
+msgstr "Нууц үг"
+
+#: src/base/forms.py:25
+msgid "Confirm password"
+msgstr "Нууц үг баталгаажуулалт"
+
+#: src/base/models/address.py:9 src/base/models/address.py:26
+#: src/base/models/address.py:43 src/base/models/cancer.py:7
+msgid "Name"
+msgstr "Нэр"
+
+#: src/base/models/address.py:12 src/base/models/address.py:23
+msgid "City"
+msgstr "Хот"
+
+#: src/base/models/address.py:13
+msgid "Cities"
+msgstr "Хотууд"
+
+#: src/base/models/address.py:29 src/base/models/address.py:40
+msgid "District"
+msgstr "Дүүрэг"
+
+#: src/base/models/address.py:30
+msgid "Districts"
+msgstr "Дүүргүүд"
+
+#: src/base/models/address.py:46
+msgid "Khoroo"
+msgstr "Хороо"
+
+#: src/base/models/address.py:47
+msgid "Khoroos"
+msgstr "Хороонууд"
+
+#: src/base/models/cancer.py:10 src/base/models/cancer.py:20
+msgid "Category"
+msgstr "Ангилал"
+
+#: src/base/models/cancer.py:11
+msgid "Categories"
+msgstr "Ангилалууд"
+
+#: src/base/models/cancer.py:21
+msgid "Title"
+msgstr "Гарчиг"
+
+#: src/base/models/cancer.py:23
+msgid "Pdf file"
+msgstr "Файл"
+
+#: src/base/models/cancer.py:25
+msgid "Created at"
+msgstr "Үүсгэсэн огноо"
+
+#: src/base/models/cancer.py:27
+msgid "Updated at"
+msgstr "Зассан огноо"
+
+#: src/base/models/cancer.py:30
+msgid "Created by"
+msgstr "Үүсгэсэн"
+
+#: src/base/models/cancer.py:37
+msgid "Updated by"
+msgstr "Зассан"
+
+#: src/base/models/cancer.py:44
+msgid "Instruction"
+msgstr "Зааварчилгаа"
+
+#: src/base/models/cancer.py:45
+msgid "Instructions"
+msgstr "Зааварчилгаанууд"
+
+#: src/base/models/employee.py:11
+msgid "User"
+msgstr "Хэрэглэгч"
+
+#: src/base/models/employee.py:14
+msgid "Employee"
+msgstr "Ажилтан"
+
+#: src/base/models/employee.py:15
+msgid "Employees"
+msgstr "Ажилтнууд"

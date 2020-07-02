@@ -1,0 +1,227 @@
+
+   {% extends 'news/index_2.html' %}
+   {% load static %}
+   {% load humanize %}
+   {% block content %}
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Гарчиг : <span>{{ news.title }}</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="#">Нүүр хуудас</a> \ <a href="#">Нийтлэл</a> \ Мэдээ</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="container marg50">
+        <div class="row">
+          <div class="col-lg-9">
+            <div id="main">
+              <section class="slider">
+                <div class="flexslider">
+                  <ul class="slides">
+                    <li> <img src="{% if news.image %}{{news.image.url}}{% endif %}" class="img-responsive" alt="IMG" height="260" width="560">
+                    </li>
+                 
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="col-lg-3" style="margin-top: 100px;">
+            <ul class="portfolio-item">
+              <li>Он сар: {{ news.created_on|naturalday:'Y-m-d'}}</li>
+              <li>Бүлэг : {{ news.category }}</li>
+              <li>Ниитэлсэн : {{ news.author }}</li>
+            </ul>
+           
+          </div>         
+        </div>
+        <div class="row marg25">
+          <div class="col-lg-8">
+            <ul class="portfolio-item">
+              <li>Контэнт:</li>
+            </ul>
+            <div class="portfolio-item-text">{{ news.content|safe }}</div></div>
+
+          <div class="col-lg-4">
+            <div class="promo-text-blog">Хайх....</div>
+            
+        <form action="#" class="searchform order-lg-last">
+                  <div class="form-group d-flex">
+                    <input type="text" name="search_text" placeholder="Хайх ..." class="form-control" value="{{ search_text }}">
+                 
+                  </div>
+                </form>
+                <!-- Ontsloh medee -->
+            <div class="promo-text-blog"></div>
+                <div class="list-group">
+                  <a style="background-color: #00C0E1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
+              {% for news in special %}
+              <a class="list-group-item" href=""> {{ news.title }}</a> 
+                  {% endfor %}
+            </div>    
+
+            <!-- Category bvleglel-->
+            <div class="promo-text-blog">Бүлэгүүд</div>
+            {% for category in category_list %}
+            <ul class="blog-category">
+              <li style="margin-bottom: 50px;"><i class="fa fa-angle-right"></i> <a href="#">{{category}}</a></li>
+            </ul>
+            {% endfor %}
+           
+           
+
+                           
+          
+        </div>
+        </div>
+      </div>
+
+<style>
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.list-group {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-left: 0;
+    box-sizing: border-box;
+}
+
+
+.tab-container {
+    position: relative;
+    padding: 0 !important;
+}
+
+#latest-post-list-sidebar, #popular-post-list-sidebar {
+    height: 318px;
+    overflow-y: scroll;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.spost .entry-title h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    height: 46px;
+    overflow: hidden;
+}
+
+.spost:first-child, .mpost:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.spost .entry-image, .spost .entry-image a, .spost .entry-image img, .spost .entry-image i {
+    width: 80px;
+    height: 50px;
+    overflow: hidden;
+}
+.spost .entry-title h4 a, .mpost .entry-title h4 a {
+    color: #333;
+}
+
+.spost .entry-image img {
+    width: 80px !important;
+    height: auto !important;
+}
+
+.spost .entry-title h4, .mpost .entry-title h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.spost, .mpost {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #E5E5E5;
+}
+.entry-c {
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-widgets-wrap .widget {
+    padding-top: 25px;
+    border-top: none;
+}
+.sidebar-widgets-wrap .widget {
+    padding-top: 50px;
+    border-top: 1px solid #EEE;
+}
+.widget {
+    position: relative;
+    margin-top: 50px;
+}
+.notopborder {
+    border-top: none !important;
+}
+.notopmargin {
+    margin-top: 0 !important;
+}
+
+
+.tabs {
+    position: relative;
+    margin: 0 0 30px 0;
+}
+.nobottommargin {
+    margin-bottom: 0 !important;
+}
+
+ul.tab-nav:not(.tab-nav-lg) {
+    margin: 0;
+    border-bottom: 1px solid #DDD;
+    list-style: none;
+}
+
+
+ul.tab-nav:not(.tab-nav-lg) li:first-child {
+    margin-left: 0;
+    border-left: 1px solid #DDD;
+}
+ul.tab-nav:not(.tab-nav-lg) li:first-child {
+    margin-left: 15px;
+    border-left: 1px solid #DDD;
+}
+ul.tab-nav:not(.tab-nav-lg) li {
+    float: left;
+    border: 1px solid #DDD;
+    border-bottom: 0;
+    border-left: 0;
+    height: 41px;
+    text-align: center;
+}
+
+
+ul.tab-nav:not(.tab-nav-lg) li.ui-tabs-active a {
+    position: relative;
+    top: 1px;
+    color: #064690;
+    background-color: #FFF;
+}
+ul.tab-nav:not(.tab-nav-lg) li.ui-tabs-active a {
+    position: relative;
+    top: 1px;
+    background-color: #FFF;
+}
+ul.tab-nav:not(.tab-nav-lg) li a {
+    display: block;
+    padding: 0 15px;
+    color: #444;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F2F2F2;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+</style>
+     
+    {% endblock %}

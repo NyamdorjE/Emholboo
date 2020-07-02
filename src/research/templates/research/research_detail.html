@@ -1,0 +1,153 @@
+
+   {% extends 'news/index_2.html' %}
+   {% load static %}
+   {% load humanize %}
+   {% block content %}
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Гарчиг : <span>{{ research.title }}</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>You are here:</span> <a href="#">Home</a> \ <a href="#">Portfolio</a> \ Detail</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="container marg50">
+        <div class="row">
+          <div class="col-lg-9">
+            <div id="main">
+              <section class="slider">
+                <div class="flexslider">
+                  <ul class="slides">
+                    <li> <img src="{% if research.image %}{{research.image.url}}{% endif %}" alt="IMG" height="260" width="860">
+                    </li>
+                 
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <ul class="portfolio-item">
+              <li>Он сар: {{ research.created_on|naturalday:'Y-m-d'}}</li>
+              <li>Бүлэг : {{ research.category }}</li>
+              <li>Ниитэлсэн : {{ research.author }}</li>
+            </ul>
+           
+          </div>         
+        </div>
+        <div class="row marg25">
+          <div class="col-lg-12">
+            <ul class="portfolio-item">
+              <li>Контэнт:</li>
+            </ul>
+            <div class="portfolio-item-text">{{ research.content|safe }}</div></div>
+        </div>
+      </div>
+      <div class="container marg75">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="promo-block">
+              <div class="promo-text">Recent Works</div>
+              <div class="center-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container marg50">
+        <div class="grid hover-3">
+          <div class="cbp-l-grid-projects" id="grid-container">
+            <ul>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/11.jpg" alt="" />
+                    <figcaption>
+                      <h3>Gadgets</h3>
+                      <span>Jacob Cummings</span>
+                      <a href="./assets/images/11.jpg" class="portfolio-attach cbp-lightbox" data-title="Gadgets<br>by Jacob Cummings"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project1.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/22.jpg" alt="" />
+                    <figcaption>
+                      <h3>Numbeez</h3>
+                      <span>Keren Hossy</span>
+                      <a href="./assets/images/22.jpg" class="portfolio-attach cbp-lightbox" data-title="Numbeez<br>by Keren Hossy"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project2.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/33.jpg" alt="" />
+                    <figcaption>
+                      <h3>Kergiwax</h3>
+                      <span>Jacob Cummings</span>
+                      <a href="./assets/images/33.jpg" class="portfolio-attach cbp-lightbox" data-title="Kergiwax<br>by Jacob Cummings"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project3.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/44.jpg" alt="" />
+                    <figcaption>
+                      <h3>Thanks!</h3>
+                      <span>MoneyDesktop</span>
+                      <a href="./assets/images/44.jpg" class="portfolio-attach cbp-lightbox" data-title="Thanks!<br>by MoneyDesktop"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project4.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/55.jpg" alt="" />
+                    <figcaption>
+                      <h3>Think Industries Alt</h3>
+                      <span>Gustav Holtz</span>
+                      <a href="./assets/images/55.jpg" class="portfolio-attach cbp-lightbox" data-title="Think Industries Alt<br>by Gustav Holtz"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project5.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              <li class="cbp-item">
+                <div class="portfolio-main">
+                  <figure>
+                    <img src="./assets/images/66.jpg" alt="" />
+                    <figcaption>
+                      <h3>Lapland</h3>
+                      <span>Julia Romer</span>
+                      <a href="./assets/images/66.jpg" class="portfolio-attach cbp-lightbox" data-title="Lapland<br>by Julia Romer"><i class="icon-search"></i></a>
+                      <a href="./portfolio/project6.html" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
+                    </figcaption>
+                  </figure> 
+                </div>
+              </li>
+              </ul>
+          </div>
+        </div>  
+      </div>
+      <script type="text/javascript">
+        $(window).load(function(){
+          $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            start: function(slider){
+              $('body').removeClass('loading');
+            }
+          });
+        });
+      </script>
+    {% endblock %}

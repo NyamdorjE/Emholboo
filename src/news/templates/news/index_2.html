@@ -1,0 +1,390 @@
+{% load static %}
+{% load humanize %}
+{% load widget_tweaks %}
+{% load bootstrap4 %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+    <title>Эм холбоо ТББ</title>
+    <meta content="" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+    <link href="{% static 'base/assets/images/favicon.ico' %}" rel="shortcut icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'base/assets/images/apple-touch-icon-144x144-precomposed.png' %}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'base/assets/images/apple-touch-icon-114x114-precomposed.png' %}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'base/assets/images/apple-touch-icon-72x72-precomposed.png' %}" />
+    <link rel="apple-touch-icon-precomposed" href="{% static 'base/assets/images/apple-touch-icon-precomposed.png' %}" />
+    <!-- JS FILES -->
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery-1.20.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/modernizr.custom.js' %}"></script>
+    <!-- CSS FILES -->
+    <link href="{% static 'base/assets/css/style.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{% static 'base/assets/css/responsive.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{% static 'base/assets/rs-plugin/css/settings.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{% static 'base/assets/css/navstylechange.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{% static 'base/assets/css/cubeportfolio.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="#" media="screen" rel="stylesheet" type="text/css" id="style-schem-color" /> 
+    <link href="#" media="screen" rel="stylesheet" type="text/css" id="style-schem" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+  <body>
+
+    <div id="wrapper">
+      <header>
+        <div class="top_line">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 pull-left">
+                <ul class="contact-top">
+                 
+                  <li><i class="icon-mobile"></i>+(976) 9909-8752</li>
+                  <li><i class="icon-mail"></i> www.mezbneh@gmail</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-5 pull-right hidden-phone">
+                  <ul class="social-links">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href='#'><i class="fa fa-flag"></i></a></li>
+                    <li id="search-btn"><a href="#"><i class="icon-search"></i></a></li>
+                  </ul>
+                <div class="search-input" id="search-input" style="display: none;">
+                  <input id="s-input" type="text" placeholder="Search..." />
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="page_head">
+        <div class="nav-container" style="height: auto;">
+          <nav>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-3 pull-left"><div class="logo"><a href="{% url 'news-homepage' %}"><img src="{% static 'base/assets/images/logo.png' %}" alt="" /></a></div></div>
+                <div class="col-lg-9 pull-right">
+                  <div class="menu">
+                    <div id="dl-menu" class="dl-menuwrapper">
+                    <button class="dl-trigger">Open Menu</button>
+                      <ul class="dl-menu">
+                        <li class="current"><a href="{% url 'news-homepage' %}">Нүүр хуудас</a></li>
+
+                        <li><a href="#">Бидний тухай</a>
+                          <ul class="dl-submenu">
+                            <li><a href="{% url 'news-about-page' %}">Компаны тухай</a></li>
+                            <li><a href="{% url 'news-time-line' %}">Түүхэн замнал</a></li>
+                            <li>
+                                    <a href="{% url 'research-law-list' %}">Хууль тогтоомж</a>
+                              
+                            </li>
+                          </ul>
+                        </li>
+                        
+                        <li><a href="#">Мэдээ мэдээлэл</a>
+                          <ul class="dl-submenu">
+                            <li><a href="{% url 'news-special-news' %}">Онцлох мэдээ</a></li>
+                            <li><a href="{% url 'news-news-list' %}">Мэдээ мэдээлэл</a></li>
+                            <li><a href="{% url 'news-sport-list' %}">Урлаг, Спорт</a></li>
+                            <li><a href="{% url 'research-research-list' %}"> Судалгаа</a></li>
+                          </ul>
+                        </li>
+                        {% comment %} <li><a href="#">Гишүүнчлэл</a>
+                          <ul class="dl-submenu">
+                  
+                          </ul>
+                        </li> {% endcomment %}
+                        <li><a href="{% url 'courses:home'%}">Сургалт</a></li>
+                        <li><a href="#">Холбоо барих</a></li>
+                        
+                        <li><a href="#">Хэрэглэгч</a>
+                          <ul class="dl-submenu">
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:change_password' %}">{% trans 'Нууц үг солих' %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:change_profile' %}">{% trans 'Нэр солих' %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:change_email' %}">{% trans 'Имайл хаяг солих' %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:log_out' %}">{% trans 'Системээс гарах' %}</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:log_in' %}">{% trans 'Нэвтрэх' %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:sign_up' %}">{% trans 'Гишүүнээр бүртгүүлэх' %}</a>
+                            </li>
+                        {% endif %}
+                          </ul>
+                        </li>
+                          <ul class="navbar-nav mr-auto">
+           
+                          </ul>
+                      </div>
+                      </ul>
+                    </div> 
+                  </div>        
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="tp-banner-container" style="height:500px;">
+        <div class="tp-banner">
+          <ul style="display:none;">
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="700">
+              <img src="{% static 'base/assets/images/fon1.jpg' %}" alt="" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+              <div class="tp-caption largeblackbg sfb" data-x="center" data-y="95" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 4">Монголын Эм Зүйн Байгууллагуудын нэгдсэн <br>"Эм" холбоо
+              </div>
+              <div class="tp-caption largeborder skewfromrightshort" data-x="center" data-y="200" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1100" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9">
+              </div>
+              <div class="tp-caption largetext sft" data-x="center" data-y="250" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1400" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9">Эмийн санд ажиллаж буй мэргэжил нэгт ЭРХЭМ ЭМ ЗҮЙЧДЭЭ нийгмийн хариуцлагынхаа хүрээнд нэг ч эмийн сан хоцролгүй,<br> эмийн сан бүр хорооныхоо 3-аас дээш хөгжлийн бэрхшээлтэй хүүхдэд <br>“Амин дэм, дархлаа сайжруулах” багц бэлтгэн өгч энэ аянд идэвхтэй оролцохыг уриалж байна.
+              </div>
+              <div class="tp-caption largebutton lfb" data-x="center" data-y="360" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><a href="#">Дэлгэрэнгүй</a>
+              </div>
+            </li>
+            <li data-transition="random" data-slotamount="7" data-masterspeed="700">
+              <img src="{% static 'base/assets/images/fon2.jpg' %}" alt="" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+              <div class="tp-caption largeblackbg sfb" data-x="30" data-y="80" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 4; font-size: 35px;">Хөгжлийн бэрхшээлтэй иргэдийн <br>эрхийг хамгаалах өдөр
+              </div>
+              <div class="tp-caption largebutton lft" data-x="30" data-y="270" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="2400" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><a href="#">Дэлгэрэнгүй</a>
+              </div>
+              <div class="tp-caption lfb" data-x="730" data-y="40" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1650" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><img src="{% static 'base/assets/images/imac.png' %}" alt="" />
+              </div>
+              <div class="tp-caption lfb" data-x="760" data-y="405" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1850" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><img src="{%  static 'base/assets/images/keyboard.png' %} " alt="" />
+              </div>
+              <div class="tp-caption lfb" data-x="1020" data-y="405" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="2000" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><img src="{%  static 'base/assets/images/mouse.png' %}" alt="" />
+              </div>
+            </li>
+            <li data-transition="random" data-slotamount="7" data-masterspeed="700">
+              <img src="{% static 'base/assets/images/fon3.jpg' %} " alt="" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+              <div class="tp-caption lfb" data-x="30" data-y="40" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><img src="{% static 'base/assets/images/woman.png' %}" alt="" />
+              <div class="tp-caption largeblackbg sfb" data-x="180" data-y="40" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1400" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 4; font-size: 30px;">ЭРҮҮЛ МЭНДИЙН САЛБАРТ ТАВТАЙ МОРИЛ 
+              </div>
+              <div class="tp-caption largetext sft" data-x="180" data-y="120" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="1600" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9;text-align:left;">Хөгжлийн бэрхшээлтэй иргэдийн эрхийг хамгаалах өдрийг тохиолдуулан "Өгөх өдөр" аяны хүрээнд <br> "Эрдэнэсийн сан"эмийн сангийн хамт олны зүгээс хөгжлийн бэрхшээлтэй 30 хүүхдэд <br> амин дэмийн багц бэлдэн витаминжууллаа.
+              </div>
+              <div class="tp-caption largebutton lft" data-x="180" data-y="310" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="500" data-start="2800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" data-captionhidden="on" style="z-index: 9"><a href="#">Дэлгэрэнгүй</a>
+              </div>
+            </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="top_line">
+          <div class="container">
+            <div class="row">
+           
+              <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 pull-left">
+                <div class="row">
+                  <marquee behavior="scroll" direction="left" height="100%", width="100%", onmouseover="this.stop();" onmouseout="this.start();">   
+                  {% for news in special %}
+                      <strong style="color: #00C0E1"> ЭХТББ</strong> <span> {{ news.title  }} </span>
+                      ".&nbsp;&nbsp; "
+                        {% endfor %}
+                  </marquee>
+                </div>
+              </div>
+            
+              <div class="col-lg-4 col-md-5 pull-right hidden-phone">
+                  <ul class="social-links">
+                    
+                    <li><a href='#'><i class="fa fa-avatar"></i>
+                   {% if request.user.is_authenticated %}
+                          Тавтай морилно уу. {{ user.username }}
+                    {% else %}
+                        <p>Тавтай морилно уу, Нэвтрэх .</p>
+                    {% endif %}
+                    </a></li>
+                    <li id="search-btn"><a href="#"><i class="icon-user"></i></a></li>
+                  </ul>
+                <div class="search-input" id="search-input" style="display: none;">
+                  <input id="s-input" type="text" placeholder="Search..." />
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </body>
+
+
+
+   
+{% block content %}
+      
+
+{% endblock %}
+<div class="prl-3 marg50 twitter-footer">
+    <div class="prlx-3">
+      <div class="container marg75">
+        <div class="row">
+          
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-11 col-ms-12">
+            <div class="tweet"></div>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs">
+            <div class="paginat">
+              <a id="prev">&lsaquo;</a>
+              <a id="next">&rsaquo;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <body>
+      <div class="footer" style="margin-top:0px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="promo-text-footer">Холбоо барих </div>
+              <ul class="contact-footer">
+                <li><i class="icon-location"></i> Хаяг: Сонгинохайрхан дүүрэг, 29-р хороо Үйлдвэрчний эвлэлийн гудамж, Улаанбаатар, Монгол Улс </li>
+                <li><i class="icon-mobile"></i> Утас:  +(976) 9909-8752</li>
+                <li><i class="icon-mail"></i> E-mail: www.mezbneh@gmail</li>
+              </ul> 
+               <ul class="soc-footer">
+                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-tumblr-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+                <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+              </ul>       
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="promo-text-footer">Хэрэгтэй холбоосууд </div>
+                <ul>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Нүүр хуудас</a></li>
+                  <li><a href="#">Бидний тухай</a></li>
+                  <li><a href="#">Мэдээ мэдээлэл</a></li>
+                  <li><a href="#">Сургалт</a></li>
+                  <li><a href="#">Холбоо барих</a></li>
+                 
+                </ul>
+              </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="promo-text-footer">Flickr Photos</div>
+                <div class="flickr_widget_wrapper"><script src="../../www.flickr.com/badge_code_v2_1f8d76af.gne.js"></script></div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="footer-bottom">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-left">
+                <div class="copyright"> 2020 <a href="#">|  ЭМ холбоо ТББ</a>. <a href="http://themeforest.net/user/Dankov" target="_blank"></a></div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-right">
+                <div class="foot_menu">
+                  <ul>
+                    <li><a href="./index.html">Нүүр хуудас</a></li>
+                    <li><a href="./about.html">Бидний тухай</a></li>
+                    <li><a href="./blog_classic_sidebar.html">Мэдээ</a></li>
+                    <li><a href="./services.html">Гишүүнчлэл</a></li>
+                    <li><a href="#" target="_blank">Холбоо барих</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <script type="text/javascript" src="{% static 'base/assets/rs-plugin/js/jquery.themepunch.plugins.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/waypoints.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/sticky.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.tweet.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/retina.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.cycle.all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.parallax-1.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.cubeportfolio.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/portfolio-main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jcarousel.responsive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.jcarousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/switch.class.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/jquery.dlmenu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/assets/js/main.js' %}"></script>
+   <div class="njs-sticky-side body-append image_button_cover placement-right now-show">
+<a href="{% url 'accounts:sign_up' %}" target="blank_"  rel="noopener noreferrer">Бүртгүүлэх</a>
+</div>
+
+  </body>
+</html>
+
+
+
+<style>
+html .njs-sticky-side.image_button_cover.placement-right {
+    right: 0;
+}
+
+html .njs-sticky-side.image_button_cover {
+    position: fixed;
+    top: 50%;
+    box-shadow: none;
+    z-index: 99999;
+    transition: transform .3s cubic-bezier(0,0,0,1);
+    -webkit-transition: -webkit-transform .3s cubic-bezier(0,0,0,1);
+}
+
+html .njs-sticky-side.image_button_cover.placement-right.now-show a {
+    transform: translate3d(4px,0,0) rotate(-90deg);
+    -webkit-transform: translate3d(4px,0,0) rotate(-90deg);
+}
+
+html .njs-sticky-side.image_button_cover.placement-right a {
+    border-radius: 3px 3px 0 0;
+    transform: translate3d(200%,0,0) rotate(-90deg);
+    -webkit-transform: translate3d(200%,0,0) rotate(-90deg);
+    transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+}
+
+html .njs-sticky-side.image_button_cover a {
+    padding: 6px 15px 12px;
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    transition: transform .3s;
+    -webkit-transition: -webkit-transform .3s;
+	background-color: black; 
+	color: white;	
+  font-weight: 100; 
+  top: -106.5px; 
+  font-family: 'Arial';
+}
+
+html .njs-sticky-side.image_button_cover a:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid #acacac;
+}
+</style>
+
+<script type="text/javascript">
+  var revapi;
+  jQuery(document).ready(function() {
+       revapi = jQuery('.tp-banner').revolution({
+        delay:9000,
+        startwidth:1170,
+        startheight:500,
+        hideThumbs:10,
+        forceFullWidth:"off",
+      });
+  }); //ready
+</script>
