@@ -71,10 +71,8 @@ class RedirectView(g.base.RedirectView):
 
 
 def handler404(request, *args, **argv):
-    return render('base/404.html', {})
+    return render(request, 'base/404.html', {})
 
 
 def handler500(request, *args, **argv):
-    return render('base/500.html', {})
-
-
+    return render(request, 'base/500.html', {})
