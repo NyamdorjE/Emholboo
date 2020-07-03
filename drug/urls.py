@@ -40,13 +40,10 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # path('search', search, name='blog-search'),
-    
 
 
 
-    
+
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
