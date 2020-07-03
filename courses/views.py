@@ -128,19 +128,6 @@ def krijo_mesim(request):
     return render(request, 'courses/krijo_mesim.html', context)
 
 
-def handler404(request, *args, **argv):
-    response = render_to_response('404.html', {},
-                                  context_instance=RequestContext(request))
-    response.status_code = 404
-    return response
-
-
-def handler500(request, *args, **argv):
-    response = render_to_response('500.html', {},
-                                  context_instance=RequestContext(request))
-    response.status_code = 500
-    return response
-
 # def get(self,request,course_slug,lesson_slug,*args,**kwargs):
 #
 #     course_qs = Course.objects.filter(slug=course_slug)
