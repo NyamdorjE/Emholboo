@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from src.base.views import handler404, handler500
 from src.poll import views as poll_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls import include, url
@@ -31,8 +30,6 @@ urlpatterns = [
     path('', include('src.research.urls')),
     path('', include('src.poll.urls')),
     path('', include('src.courses.urls')),
-    path('404/', handler404),
-    path('500/', handler500),
     path('poll/', poll_views.home, name='poll'),
     path('create/', poll_views.create, name='create'),
     path('vote/<poll_id>/', poll_views.vote, name='vote'),
