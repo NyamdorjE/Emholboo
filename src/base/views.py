@@ -68,3 +68,12 @@ class DetailView(BaseMixin, g.DetailView):
 
 class RedirectView(g.base.RedirectView):
     pass
+
+
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def my_test_500_view(request):
+    # Return an "Internal Server Error" 500 response code.
+    return HttpResponse(status=500)

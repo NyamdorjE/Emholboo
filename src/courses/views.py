@@ -1,9 +1,9 @@
 import secrets
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView,ListView,DetailView,View
-from src.courses.models import Subject,Lesson,Course, CourseCategory
+from django.views.generic import TemplateView, ListView, DetailView, View
+from src.courses.models import Subject, Lesson, Course, CourseCategory
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 
 
@@ -19,12 +19,14 @@ class HomeView(TemplateView):
         context['categorylist'] = CourseCategory.objects.all()
         return context
 
+
 class AboutView(TemplateView):
     template_name = 'about.html'
 
 
 class ContactView(TemplateView):
     template_name = 'contact.html'
+
     def post(self, request):
         form = HomeForm(request.POST)
         if form.is_valid():
@@ -40,14 +42,12 @@ class ContactView(TemplateView):
         return render(request, self.template_name, args)
 
 
-
 def CourseListView(request, category):
     courses = Subject.objects.filter(course=category)
     context = {
-        'courses':courses
+        'courses': courses
     }
     return render(request, 'courses/course_list.html', context)
-
 
 
 class CourseDetailView(DetailView):
@@ -57,15 +57,17 @@ class CourseDetailView(DetailView):
 
 
 class SuggestView(TemplateView):
-    template_name="courses/suggest.html"
-    
-class LessonDetailView(View,LoginRequiredMixin):
-    
+    template_name = "courses/suggest.html"
+
+
+class LessonDetailView(View, LoginRequiredMixin):
+
     def get(self, request, course_slug, lesson_slug, *args, **kwargs):
         courses = Course.objects.all()
         subject = get_object_or_404(Subject, slug=course_slug)
-        student_ids = Course.objects.get(pk=subject.course.id).students.values_list('id', flat=True)
-        print(list(student_ids),'**************')
+        student_ids = Course.objects.get(
+            pk=subject.course.id).students.values_list('id', flat=True)
+        print(list(student_ids), '**************')
         if request.user.id in list(student_ids):
             course = get_object_or_404(Subject, slug=course_slug)
             lesson = get_object_or_404(Lesson, slug=lesson_slug)
@@ -78,18 +80,7 @@ class LessonDetailView(View,LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context["subject"] = Subject.objects.all()
         return context
-    
 
-
-
-def view_404(request, exception):
-    return render(request, '404.html')
-
-def view_403(request, exception):
-    return render(request, '403.html')
-
-def view_500(request):
-    return render(request, '500.html')
 
 # def get(self,request,course_slug,lesson_slug,*args,**kwargs):
 #
@@ -111,14 +102,12 @@ def view_500(request):
 #     return render(request,'courses/lesson_detail.html',context)
 
 
-
 @login_required
 def SearchView(request):
     if request.method == 'POST':
         search = request.POST.get('search')
         results = Lesson.objects.filter(title__contains=search)
         context = {
-            'results':results
+            'results': results
         }
         return render(request, 'courses/search_result.html', context)
-

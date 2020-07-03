@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 
-from .models import Poll
+from src.poll.models import Poll
+
 
 class CreatePollForm(ModelForm):
     class Meta:

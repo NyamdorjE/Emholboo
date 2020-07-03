@@ -53,17 +53,3 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
-
-
-def handler404(request, exception):
-    context = {}
-    response = render(request, "base/base/404.html", context=context)
-    response.status_code = 404
-    return response
-
-
-def handler500(request):
-    context = {}
-    response = render(request, "base/base/500.html", context=context)
-    response.status_code = 500
-    return response

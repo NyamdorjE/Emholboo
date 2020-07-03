@@ -3,14 +3,14 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import user_passes_test
 
 
-
 from .forms import CreatePollForm
 from .models import Poll
+
 
 def home(request):
     polls = Poll.objects.all()
     context = {
-        'polls' : polls
+        'polls': polls
     }
     return render(request, 'poll/home.html', context)
 
@@ -25,9 +25,10 @@ def create(request):
     else:
         form = CreatePollForm()
     context = {
-        'form' : form
+        'form': form
     }
     return render(request, 'poll/create.html', context)
+
 
 def vote(request, poll_id):
     poll = Poll.objects.get(pk=poll_id)
@@ -49,14 +50,15 @@ def vote(request, poll_id):
         return redirect('results', poll.id)
 
     context = {
-        'poll' : poll
+        'poll': poll
     }
     return render(request, 'poll/vote.html', context)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def results(request, poll_id):
     poll = Poll.objects.get(pk=poll_id)
     context = {
-        'poll' : poll
+        'poll': poll
     }
     return render(request, 'poll/results.html', context)

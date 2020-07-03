@@ -23,6 +23,7 @@ from django.conf.urls import include, url
 from src.accounts import views as user_views
 from src.courses import views as courses_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('src.accounts.urls')),
@@ -30,17 +31,12 @@ urlpatterns = [
     path('', include('src.research.urls')),
     path('', include('src.poll.urls')),
     path('', include('src.courses.urls')),
-    path('poll/', poll_views.home, name='poll'),
-    path('create/', poll_views.create, name='create'),
-    path('vote/<poll_id>/', poll_views.vote, name='vote'),
-    path('results/<poll_id>/', poll_views.results, name='results'),
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # path('search', search, name='blog-search'),
 
-
-
-
-
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = "src.base.views.error_404"
+handler500 = "src.base.views.my_test_500_view"
