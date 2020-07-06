@@ -19,7 +19,7 @@
             {% for category in categorylist %}
               <button data-filter="*" class="cbp-filter-item-active cbp-filter-item">{{ category.title }}<div class="cbp-filter-counter"></div></button>
             {% endfor %}
-            <button data-filter="*" class="cbp-filter-item-active cbp-filter-item"> Сургалт хүсэх <div class="cbp-filter-counter"></div></button>
+            <button  class="cbp-filter-item-active cbp-filter-item"> <a href="{% url 'contact' %}" style="color: white;">Сургалт хүсэх </a> <div class="cbp-filter-counter"></div></button>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 {% extends 'news/index_2.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -7,7 +8,15 @@
 
 
 
-
+<div id="wrapper">
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Сургалт: <span>Сургалт хүсэх</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="#">Нүүр хуудас</a> \ Сургалт хүсэх</div></div>
+          </div>
+        </div>
+      </div>
 <!-- Page -->
 <section class="contact-page spad pb-0">
   <div class="container">
@@ -15,12 +24,12 @@
       <div class="col-lg-8">
         <div class="contact-form-warp">
           <div class="section-title text-white text-left">
-            <h2>Get in Touch</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. </p>
+ 
+          
           </div>
          <form action="" method="POST">
            {% csrf_token %}
-            {{ form.post }}
+  {% crispy form %}
             <input type="submit" value="Submit"/>
         </form>
         </div>
@@ -28,17 +37,15 @@
       <div class="col-lg-4">
         <div class="contact-info-area">
           <div class="section-title text-left p-0">
-            <h2>Contact Info</h2>
-            <p>Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendi sse cursus faucibus finibus.</p>
+            <h2>Хэрхэн сургалт хүсэх вэ</h2>
+            <p>Манай компаниас ямар төрлийн сургалт болон ямар аргаар сургалт хүсэхээ бөглөж илгээнэ үү.</p>
           </div>
           <div class="phone-number">
-            <span>Direct Line</span>
-            <h2>+2348091356855</h2>
+            <h5>Холбогдох хаяг</h5>
           </div>
           <ul class="contact-list">
-            <li>35 Igando Lane <br>Lagos Nigeria</li>
-            <li>+2348091356855</li>
-            <li>redian1marku@gmail.com</li>
+            <li><i class="fa fa-phone-square"></i>   Утас: +(976) 9909-8752</li>
+            <li><i class=" fa-envelope"></i>   Имайл хаяг:  www.mezbneh@gmail</li>
           </ul>
           <div class="social-links">
             <a href="#"><i class="fa fa-pinterest"></i></a>

@@ -1,45 +1,47 @@
-from django.db import models
-from django.forms import ModelForm
+from django import forms
 from django.shortcuts import render
+
 from django.db import models
-from django.template import loader
-from django.http import HttpResponse
-from django.forms import modelformset_factory
+from django.contrib import admin
+from django.contrib.auth.models import User, Group
+from django.utils.translation import ugettext_lazy as _
 
 
-class contact(models.Model):
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(default='')
+    Phone = models.CharField(max_length=10, default='')
+    message = models.TextField()
 
-    title = models.CharField(max_length=100)
-    gender = models.CharField(max_length=255)
-    notes = models.CharField(max_length=255)
+    class Meta:
+        verbose_name = "Холбоо барих"
+        ordering = ['name']
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
-class contact(ModelForm):
+class ContactForm(forms.ModelForm):
     class Meta:
-        model = contact
-        fields = ['title', 'notes']
+        model = Contact
+        fields = ["name", "Phone", 'email', 'message']
+        labels = {'name': "Нэр",
+                  "Phone": "Утас",
+                  'email': 'Имайл',
+                  'message': 'Хүсэлт',
+                  }
 
-
-# Create your views here.
+        from django.shortcuts import render
 
 
 def contact(request):
-
-    if request.method == 'POST':
-        form = contact(request.POST)
+    if request.method == "POST":
+        form = ContactForm(request.POST)
         if form.is_valid():
-
-            u = form.save()
-            users = contact.objects.all()
-
-            return render(request, 'contact.html', {'users': users})
-
+            form.save()
     else:
-        form_class = contact
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
 
-    return render(request, 'contact.html', {
-        'form': form_class,
-    })
+
+admin.site.register(Contact)
