@@ -22,7 +22,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import include, url
 from src.accounts import views as user_views
 from src.courses import views as courses_views
-
+from src.base.models import contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('src.research.urls')),
     path('', include('src.poll.urls')),
     path('', include('src.courses.urls')),
+    path('contact/', contact.contact, name='contact'),
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # path('search', search, name='blog-search'),

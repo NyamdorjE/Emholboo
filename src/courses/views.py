@@ -24,24 +24,6 @@ class AboutView(TemplateView):
     template_name = 'about.html'
 
 
-class ContactView(TemplateView):
-    template_name = 'contact.html'
-
-    def post(self, request):
-        form = HomeForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
-
-            text = form.cleaned_data['post']
-            form = HomeForm()
-            return redirect('home:home')
-
-        args = {'form': form, 'text': text}
-        return render(request, self.template_name, args)
-
-
 def CourseListView(request, category):
     courses = Subject.objects.filter(course=category)
     context = {

@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'src.research.apps.ResearchConfig',
     'src.courses.apps.CoursesConfig',
     'src.poll.apps.PollConfig',
-
     'widget_tweaks',
     'ckeditor',
     'registration',
@@ -180,14 +179,14 @@ EMAIL_ACTIVATION_AFTER_CHANGING = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-USE_I18N = True
-USE_L10N = True
-
-
-TIME_ZONE = 'UTC'
-USE_TZ = True
-
 
 SIGN_UP_FIELDS = ['username',  'email', 'password1', 'password2']
 if DISABLE_USERNAME:
     SIGN_UP_FIELDS = ['email', 'password1', 'password2']
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'elastinex@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587

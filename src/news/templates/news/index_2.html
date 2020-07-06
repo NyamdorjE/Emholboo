@@ -29,6 +29,7 @@
     <link href="#" media="screen" rel="stylesheet" type="text/css" id="style-schem-color" /> 
     <link href="#" media="screen" rel="stylesheet" type="text/css" id="style-schem" />  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+  
   <body>
 
     <div id="wrapper">
@@ -68,22 +69,26 @@
                 <div class="col-lg-9 pull-right">
                   <div class="menu">
                     <div id="dl-menu" class="dl-menuwrapper">
-                    <button class="dl-trigger">Open Menu</button>
+                    <button class="dl-trigger">Цэс нээх</button>
+
+
+
+                	{% with request.resolver_match.url_name as url_name %}
+
                       <ul class="dl-menu">
                         <li class="current"><a href="{% url 'news-homepage' %}">Нүүр хуудас</a></li>
 
-                        <li><a href="#">Бидний тухай</a>
+                        <li class="dropdown active"><a href="#">Бидний тухай</a>
                           <ul class="dl-submenu">
                             <li><a href="{% url 'news-about-page' %}">Компаны тухай</a></li>
                             <li><a href="{% url 'news-time-line' %}">Түүхэн замнал</a></li>
                             <li>
-                                    <a href="{% url 'research-law-list' %}">Хууль тогтоомж</a>
-                              
+                              <a href="{% url 'research-law-list' %}">Хууль тогтоомж</a>  
                             </li>
                           </ul>
                         </li>
                         
-                        <li><a href="#">Мэдээ мэдээлэл</a>
+                        <li class="dropdown active" ><a href="#">Мэдээ мэдээлэл</a>
                           <ul class="dl-submenu">
                             <li><a href="{% url 'news-special-news' %}">Онцлох мэдээ</a></li>
                             <li><a href="{% url 'news-news-list' %}">Мэдээ мэдээлэл</a></li>
@@ -91,12 +96,9 @@
                             <li><a href="{% url 'research-research-list' %}"> Судалгаа</a></li>
                           </ul>
                         </li>
-                        {% comment %} <li><a href="#">Гишүүнчлэл</a>
-                          <ul class="dl-submenu">
-                  
-                          </ul>
-                        </li> {% endcomment %}
+
                         <li><a href="{% url 'courses:home'%}">Сургалт</a></li>
+
                         <li><a href="#">Холбоо барих</a></li>
                         
                         <li><a href="#">Хэрэглэгч</a>
@@ -127,6 +129,9 @@
                           <ul class="navbar-nav mr-auto">
            
                           </ul>
+							{% endwith %} 
+
+
                       </div>
                       </ul>
                     </div> 
@@ -260,21 +265,64 @@
                 <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
               </ul>       
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="promo-text-footer">Хэрэгтэй холбоосууд </div>
-                <ul>
-                  <li><a href="#"></a></li>
-                  <li><a href="#">Нүүр хуудас</a></li>
-                  <li><a href="#">Бидний тухай</a></li>
-                  <li><a href="#">Мэдээ мэдээлэл</a></li>
-                  <li><a href="#">Сургалт</a></li>
-                  <li><a href="#">Холбоо барих</a></li>
+                <ul class="list ">
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+"></a></li>
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+">Нүүр хуудас</a></li>
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+">Бидний тухай</a></li>
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+">Мэдээ мэдээлэл</a></li>
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+">Сургалт</a></li>
+                  <li class="list" style="
+    padding-bottom: 8px;
+"><a href="#" style="
+    padding-bottom: 10px;
+    color: #5f5454;
+">Холбоо барих</a></li>
                  
                 </ul>
               </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-              <div class="promo-text-footer">Flickr Photos</div>
-                <div class="flickr_widget_wrapper"><script src="../../www.flickr.com/badge_code_v2_1f8d76af.gne.js"></script></div>
+            <div class="col-lg-5 col-md-5 col-sm-5">
+              <div class="promo-text-footer"> Сургалтууд</div>
+                {% for cat in category|slice:'0:2' %}
+               <div class="row">
+                <div class="col-md-4">
+                    
+                        <a href="/courses/{{ cat.id }}"> <img src="{% if cat.image %}{{ cat.image.url}}{% endif %}" alt="" class="lesson-image" style="width: 90px;"></a>
+                    
+                </div>
+                <div class="col-md-8">
+                  
+                      <a href="/courses/{{ cat.id }}">   <h5 class="card-title mt-3 mb-3">{{ cat.title }} • {{ cat.price }}</h5></a>
+                  
+                </div>
+               </div>
+               {% endfor %}
             </div>
           </div>
         </div>

@@ -1,15 +1,26 @@
 {% extends "news/index_2.html" %}
 {% load static %}
+   {% load humanize %}
+
 {% block content %}
 
-        
+        <div id="wrapper">
+
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Хуудас: <span>Хууль тогтоомж </span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="#">Home</a> \ Хууль тогтоомж</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <h2 style="padding-left:250px;">Хууль тогтоомж</h2>
        
       </div>
     </div>
@@ -29,21 +40,24 @@
       <thead>
         <tr>
           <td class='left row-header'>Хууль тогтоомж</td>
+          <td class=""> Баталсан өдөр</td>
+          <td class=""> Үзэх</td>
+
           
         </tr>
       </thead>
       <tbody>
       {% for law in law %}
-
-
         {{ law.description }}
         <tr>
             <td class='left'> {{ law.title }}</td>
-            <td><span class="pdf-icon"></span></td>
+            <td>{{ law.created_at|naturalday:'Y-m-d' }}</td>
             <td>
                 <li>
-                    <a href="{{ law.pdf_file.url }}">{{ law.pdf_file.name }}</a>
-                    <small>({{ law.pdf_file.size|filesizeformat }}) - {{law.upload_date}}</small>
+                  <a href="{{ law.pdf_file.url }}">
+                  <span class="pdf-icon"> </span>
+                  </a>                   
+                    
                 </li>
             </td>
          

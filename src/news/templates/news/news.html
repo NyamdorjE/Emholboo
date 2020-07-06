@@ -17,7 +17,8 @@
 
       <div class="container marg50">
         <div class="row">
-         
+        {% if news %}
+ 
           <div class="col-lg-8">
          {% for news in news %}
             <div class="row">
@@ -56,16 +57,17 @@
             
         <form action="#" class="searchform order-lg-last">
                   <div class="form-group d-flex">
-                    <input type="text" name="search_text" placeholder="Хайх ..." class="form-control" value="{{ search_text }}">
+                    <input type="text" name="search_text" placeholder="Энд хайх утгаа бичнэ үү." class="form-control" value="{{ search_text }}">
                  
                   </div>
                 </form>
                 <!-- Ontsloh medee -->
             <div class="promo-text-blog"></div>
                 <div class="list-group">
-                  <a style="background-color: #00C0E1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
+                  <a style="background-color: #0064e1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
               {% for news in special %}
-              <a class="list-group-item" href=""> {{ news.title }}</a> 
+              <a class="list-group-item" href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">
+               {{ news.title }}</a> 
                   {% endfor %}
             </div>    
 
@@ -82,9 +84,8 @@
       <div class="widget clearfix notopmargin notopborder">
         <div class="tabs nobottommargin clearfix ui-tabs ui-widget ui-widget-content ui-corner-all" id="sidebar=tabs">
           <ul class="tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-                                                    <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Их уншсан</a></li>
-                                                   
-                                                    
+            <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Сүүлд нэмэгдсэн</a></li>
+                                                                         
        </ul>
           <div class="tab-container">
               <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-1" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
@@ -92,11 +93,11 @@
                   {% for news in news %}
                         <div class="row spost clearfix"> 
                             <div class="col-md-4 entry-image">
-                                <a href="" class="nobg">  <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="IMG" height="200" width="140"> </a>
+                                <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}" class="nobg">  <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="IMG" height="200" width="140"> </a>
                             </div>
                             <div class="col-md-8 entry-c">
                                 <div class="entry-title">
-                                <h4> <a href=""> {{ news.title }} </a> </h4>
+                                <h4> <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}"> {{ news.title }} </a> </h4>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +134,7 @@
                         {% endif %}
                       </ul>
                   {% endif %}
+                {% endif %}
                 </div>
               </div>
             </div>

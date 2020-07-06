@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+    <div id="wrapper">
       <div class="page-in">
         <div class="container">
           <div class="row">
@@ -32,13 +33,16 @@
   </div>   -->
   <div class="row" style="margin-top: 50px;">
   {% for cat in category %}
-      <div class="col-md-3 col-sm-6" style="  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
+      <div class="col-md-3 col-sm-6" style="  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); margin-right: 25px;">
           <div class="card card-block">
-               <h4 class="card-title text-right"><i class="material-icons"><a href="/courses/{{ cat.id }}">Хичээл үзэх</a> </i></h4>
+               
                    
-                     <a href="/courses/{{ cat.id }}"> <img src="{% if cat.image %}{{ cat.image.url}}{% endif %}" alt="Photo of sunset" class="lesson-image"></a>
-              <a href="/courses/{{ cat.id }}">   <h5 class="card-title mt-3 mb-3">{{ cat.title }} • {{ cat.price }}</h5></a>
-                  <a href="/courses/{{ cat.id }}">   <p class="card-text">{{ cat.description|slice:":60" | safe}}</p> </a>
+                     <a href="/courses/{{ cat.id }}"> <img src="{% if cat.image %}{{ cat.image.url}}{% endif %}" alt="" class="lesson-lel-image"></a>
+                     <a href="/courses/{{ cat.id }}">   <h5 class="card-title mt-3 mb-3">{{ cat.title }} • {{ cat.price }}</h5></a>
+                     <a href="/courses/{{ cat.id }}">   <p class="card-text">{{ cat.description|slice:":60" | safe}}</p> </a>
+
+                     <h4 class="card-title text-right"><i class="material-icons"><a href="/courses/{{ cat.id }}">
+                  <button>Хичээл үзэх</button></a> </i></h4>
           </div>
       </div>
   {% endfor %}
@@ -47,7 +51,7 @@
   </body>
 
   <style>
-.lesson-image{
+.lesson-lel-image{
   height:160px;
   width:100%;
 }

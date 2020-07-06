@@ -47,16 +47,16 @@
             
         <form action="#" class="searchform order-lg-last">
                   <div class="form-group d-flex">
-                    <input type="text" name="search_text" placeholder="Хайх ..." class="form-control" value="{{ search_text }}">
+                    <input type="text" name="search_text" placeholder="Энд хайх утгаа оруулна уу." class="form-control" value="{{ search_text }}">
                  
                   </div>
                 </form>
                 <!-- Ontsloh medee -->
             <div class="promo-text-blog"></div>
                 <div class="list-group">
-                  <a style="background-color: #00C0E1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
+                  <a style="background-color: #0064e1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
               {% for news in special %}
-              <a class="list-group-item" href=""> {{ news.title }}</a> 
+              <a class="list-group-item" href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}"> {{ news.title }}</a> 
                   {% endfor %}
             </div>    
 
