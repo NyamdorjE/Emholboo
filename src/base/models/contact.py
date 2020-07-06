@@ -1,6 +1,7 @@
 from django import forms
 from django.shortcuts import render
-
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
@@ -31,7 +32,12 @@ class ContactForm(forms.ModelForm):
                   'message': 'Хүсэлт',
                   }
 
-        from django.shortcuts import render
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit('submit', 'Submit', css_class='btn-primary'))
+        self.helper.form_method = 'POST'
 
 
 def contact(request):
