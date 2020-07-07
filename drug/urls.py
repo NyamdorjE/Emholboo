@@ -23,6 +23,7 @@ from django.conf.urls import include, url
 from src.accounts import views as user_views
 from src.courses import views as courses_views
 from src.base.models import contact
+from src.base.models import request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('', include('src.poll.urls')),
     path('', include('src.courses.urls')),
     path('contact/', contact.contact, name='contact'),
+    path('request/', request.request, name='request'),
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # path('search', search, name='blog-search'),

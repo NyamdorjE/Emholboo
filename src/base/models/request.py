@@ -8,46 +8,46 @@ from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
 
 
-class Contact(models.Model):
+class Request(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(default='')
     Phone = models.CharField(max_length=10, default='')
     message = models.TextField()
 
     class Meta:
-        verbose_name = "Сургалт хүссэн "
+        verbose_name = "Холбоо барих"
         ordering = ['name']
 
     def __str__(self):
         return self.name
 
 
-class ContactForm(forms.ModelForm):
+class RequestForm(forms.ModelForm):
     class Meta:
-        model = Contact
+        model = Request
         fields = ["name", "Phone", 'email', 'message']
         labels = {'name': "Нэр",
                   "Phone": "Утас",
                   'email': 'Имайл',
-                  'message': 'Хүсэлт',
+                  'message': 'Холбоо барих',
                   }
 
     def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
+        super(RequestForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(
             Submit('submit', 'Submit', css_class='btn-primary'))
         self.helper.form_method = 'POST'
 
 
-def contact(request):
+def request(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
+        form = RequestForm(request.POST)
         if form.is_valid():
             form.save()
     else:
-        form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+        form = RequestForm()
+    return render(request, 'homecontact.html', {'form': form})
 
 
-admin.site.register(Contact)
+admin.site.register(Request)
