@@ -10,31 +10,32 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 pull-left"><div class="page-in-name">Нийтлэл: <span>Онцлох мэдээ </span></div></div>
-            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="#">Нүүр</a> \ Онцлох мэдээ</div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="#">Home</a> \ Онцлох мэдээ</div></div>
           </div>
         </div>
       </div>
 
       <div class="container marg50">
         <div class="row">
-         
-          <div class="col-lg-9">
+        {% if news %}
+ 
+          <div class="col-lg-8">
          {% for news in special %}
             <div class="row">
               <div class="medium-blog">
        
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                   <div class="cl-blog-img">
                     <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">
-                      <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="IMG" height="260" width="260">
+                      <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="IMG" height="197" width="126">
                     </a>
                   </div>
                 </div>               
-                <div class="col-lg-7">
-                  <div class="med-blog-naz">
-                    <div class="cl-blog-type"><i class="icon-pencil"></i></div>
+                <div class="col-lg-8">
+                  <div class="med-blog-naz" style="border-left: 1px solid gray;">
+                    
                     <div class="cl-blog-name"><a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">{{ news.title }}</a></div>
-                    <div class="cl-blog-detail">	{{ news.created_on|naturalday:'Y-m-d'}},  <a href="#">{{ news.author }}</a>, in <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">{{ news.category }}</a>, <a href="#"></a></div>
+                    <div class="cl-blog-detail">	<i class="fa fa-calendar">   {{ news.created_on|naturalday:'Y-m-d'}} </i>,  <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">{{ news.author }}</a>, in <a href="#">{{ news.category }}</a>, <a href="#"></a></div>
                     <div class="row">
                      <div class="cl-blog-text">{{ news.content|safe|slice:":150" }}...</div>
                     </div>
@@ -51,35 +52,62 @@
            
       
               
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <div class="promo-text-blog">Хайх....</div>
-             <form action="#" class="searchform order-lg-last">
+            
+        <form action="#" class="searchform order-lg-last">
                   <div class="form-group d-flex">
-                    <input type="text" name="search_text" placeholder="Хайх ..." class="form-control" value="{{ search_text }}">
+                    <input type="text" name="search_text" placeholder="Энд хайх утгаа бичнэ үү." class="form-control" value="{{ search_text }}">
+                 
                   </div>
                 </form>
-            <div class="promo-text-blog">Category</div>
-           {% for category in category_list %}
+                <!-- Ontsloh medee -->
+            <div class="promo-text-blog"></div>
+                <div class="list-group">
+                  <a style="background-color: #0064e1" class="list-group-item active" href=""> Онцлох мэдээнүүд </a>
+              {% for news in special %}
+              <a class="list-group-item" href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}">
+               {{ news.title }}</a> 
+                  {% endfor %}
+            </div>    
+
+            <!-- Category bvleglel-->
+            <div class="promo-text-blog">Бүлэгүүд</div>
+            {% for category in category_list %}
             <ul class="blog-category">
-              <li><i class="fa fa-angle-right"></i> <a href="#">{{category}}</a></li>
+              <li style="margin-bottom: 50px;"><i class="fa fa-angle-right"></i> <a href="#">{{category}}</a></li>
             </ul>
             {% endfor %}
            
-            <div class="promo-text-blog">Popular Tag's</div>
-            <ul class="tags-blog">
-              <li><a href="#">sapien</a></li>
-              <li><a href="#">posuere</a></li>
-              <li><a href="#">erdum</a></li>
-              <li><a href="#">lecs</a></li>
-              <li><a href="#">velit</a></li>
-              <li><a href="#">eros</a></li>
-              <li><a href="#">quis</a></li>
-              <li><a href="#">fermen</a></li>
-              <li><a href="#">lorem</a></li>
-              <li><a href="#">sapien</a></li>
-              <li><a href="#">posuere</a></li>
-            </ul>
-          </div>
+           
+
+      <div class="widget clearfix notopmargin notopborder">
+        <div class="tabs nobottommargin clearfix ui-tabs ui-widget ui-widget-content ui-corner-all" id="sidebar=tabs">
+          <ul class="tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+            <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Сүүлд нэмэгдсэн</a></li>
+                                                                         
+       </ul>
+          <div class="tab-container">
+              <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-1" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
+                  <div id="popular-post-list-sidebar">
+                  {% for news in news %}
+                        <div class="row spost clearfix"> 
+                            <div class="col-md-4 entry-image">
+                                <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}" class="nobg">  <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="IMG" height="200" width="140"> </a>
+                            </div>
+                            <div class="col-md-8 entry-c">
+                                <div class="entry-title">
+                                <h4> <a href="{% if news %}{% url 'news-news-detail' news.slug  %} {% endif %}"> {{ news.title }} </a> </h4>
+                                </div>
+                            </div>
+                        </div>
+                  {% endfor %}
+                  </div>         
+              </div>
+            </div>
+        </div>
+    </div>                      
+          
         </div>
 
             <div class="row">
@@ -106,6 +134,7 @@
                         {% endif %}
                       </ul>
                   {% endif %}
+                {% endif %}
                 </div>
               </div>
             </div>
@@ -168,4 +197,146 @@
   </body>
 </html>
 
+
+
+<style>
+.list-group {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-left: 0;
+    box-sizing: border-box;
+}
+
+
+.tab-container {
+    position: relative;
+    padding: 0 !important;
+}
+
+#latest-post-list-sidebar, #popular-post-list-sidebar {
+    height: 318px;
+    overflow-y: scroll;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.spost .entry-title h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    height: 46px;
+    overflow: hidden;
+}
+
+.spost:first-child, .mpost:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.spost .entry-image, .spost .entry-image a, .spost .entry-image img, .spost .entry-image i {
+    width: 80px;
+    height: 50px;
+    overflow: hidden;
+}
+.spost .entry-title h4 a, .mpost .entry-title h4 a {
+    color: #333;
+}
+
+.spost .entry-image img {
+    width: 80px !important;
+    height: auto !important;
+}
+
+.spost .entry-title h4, .mpost .entry-title h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.spost, .mpost {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #E5E5E5;
+}
+.entry-c {
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-widgets-wrap .widget {
+    padding-top: 25px;
+    border-top: none;
+}
+.sidebar-widgets-wrap .widget {
+    padding-top: 50px;
+    border-top: 1px solid #EEE;
+}
+.widget {
+    position: relative;
+    margin-top: 50px;
+}
+.notopborder {
+    border-top: none !important;
+}
+.notopmargin {
+    margin-top: 0 !important;
+}
+
+
+.tabs {
+    position: relative;
+    margin: 0 0 30px 0;
+}
+.nobottommargin {
+    margin-bottom: 0 !important;
+}
+
+ul.tab-nav:not(.tab-nav-lg) {
+    margin: 0;
+    border-bottom: 1px solid #DDD;
+    list-style: none;
+}
+
+
+ul.tab-nav:not(.tab-nav-lg) li:first-child {
+    margin-left: 0;
+    border-left: 1px solid #DDD;
+}
+ul.tab-nav:not(.tab-nav-lg) li:first-child {
+    margin-left: 15px;
+    border-left: 1px solid #DDD;
+}
+ul.tab-nav:not(.tab-nav-lg) li {
+    float: left;
+    border: 1px solid #DDD;
+    border-bottom: 0;
+    border-left: 0;
+    height: 41px;
+    text-align: center;
+}
+
+
+ul.tab-nav:not(.tab-nav-lg) li.ui-tabs-active a {
+    position: relative;
+    top: 1px;
+    color: #064690;
+    background-color: #FFF;
+}
+ul.tab-nav:not(.tab-nav-lg) li.ui-tabs-active a {
+    position: relative;
+    top: 1px;
+    background-color: #FFF;
+}
+ul.tab-nav:not(.tab-nav-lg) li a {
+    display: block;
+    padding: 0 15px;
+    color: #444;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F2F2F2;
+    font-size: 14px;
+    font-weight: bold;
+}
+</style>
 {% endblock %}
