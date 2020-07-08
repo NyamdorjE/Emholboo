@@ -76,7 +76,7 @@
                 	{% with request.resolver_match.url_name as url_name %}
 
                       <ul class="dl-menu">
-                        <li class="current"><a href="{% url 'news-homepage' %}">Нүүр хуудас</a></li>
+                        <li class="active" ><a style="padding-right: 15px;" href="{% url 'news-homepage' %}">Нүүр хуудас</a></li>
 
                         <li class="dropdown active"><a href="#">Бидний тухай</a>
                           <ul class="dl-submenu">
@@ -215,7 +215,7 @@
                     <li id="search-btn"><a href="#"><i class="icon-user"></i></a></li>
                   </ul>
                 <div class="search-input" id="search-input" style="display: none;">
-                  <input id="s-input" type="text" placeholder="Search..." />
+                  <input id="s-input" type="text" name="search_text" placeholder="Энд хайх утгаа бичнэ үү." class="form-control" value="{{ search_text }}">
                 </div>
               </div> 
             </div>

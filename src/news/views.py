@@ -17,7 +17,7 @@ from django.http import HttpResponseRedirect
 
 
 class NewsList(generic.ListView):
-    queryset = News.objects.filter().order_by('-created_on')
+    queryset = News.objects.all()
     template_name = 'news/news.html'
     paginate_by = 4
 
@@ -113,7 +113,7 @@ class Greetings(TemplateView):
 
 
 class SportList(generic.ListView):
-    queryset = News.objects.all().order_by('-created_on')
+    queryset = News.objects.filter(category="2")
     template_name = 'news/sport.html'
     paginate_by = 9
 
@@ -139,13 +139,13 @@ class SportList(generic.ListView):
 
 
 class SpecialNews(generic.ListView):
-    queryset = News.objects.all().order_by('-created_on')
+    queryset = News.objects.filter(is_special='True')
     template_name = 'news/specialnews.html'
-    paginate_by = 9
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
         context = super(SpecialNews, self).get_context_data(**kwargs)
-        context['search'] = self.get_queryset()
+        context['news'] = self.get_queryset()
         context['special'] = News.objects.filter(is_special='True')
         context['category_list'] = Category.objects.filter(cate_type="news")
         context['search_text'] = self.request.GET.get('search_text', '')

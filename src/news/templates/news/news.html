@@ -10,17 +10,16 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 pull-left"><div class="page-in-name">Нийтлэл: <span>Мэдээ мэдээлэл </span></div></div>
-            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="{% url 'news-homepage' %}">Нүүр хуудас</a> \ Мэдээ мэдээлэл</div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="{% url 'news-homepage'  %}">Нүүр хуудас</a> \ Мэдээ мэдээлэл</div></div>
           </div>
         </div>
       </div>
 
       <div class="container marg50">
         <div class="row">
-        {% if news %}
  
           <div class="col-lg-8">
-         {% for news in news %}
+         {% for news in news_list %}
             <div class="row">
               <div class="medium-blog">
        
@@ -112,7 +111,7 @@
 
             <div class="row">
               <div class="col-lg-12">
-                <div class="pride_pg">
+                <div class="pride_pg" style="padding-left: 350px;">
                       {% if is_paginated %}
                       <ul class="pagination">
                         {% if page_obj.has_previous %}
@@ -134,7 +133,6 @@
                         {% endif %}
                       </ul>
                   {% endif %}
-                {% endif %}
                 </div>
               </div>
             </div>

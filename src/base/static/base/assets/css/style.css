@@ -1229,12 +1229,12 @@ ul.switcher-op-selectors li  a {
     font-weight: 300;
 }
 .cl-blog-read {
-    border: 1px solid #eee;
+    border: 1px solid #636363;
     float: left;
     padding: 8px 12px;
     border-radius: 2px;
     font-weight: 300;
-    margin-left: 75px;
+    margin-left: 305px;
     margin-top: 20px;
 }
 .cl-blog-read a {
