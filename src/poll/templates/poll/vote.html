@@ -1,13 +1,28 @@
 {% extends "poll/base.html" %}
+{% load static %}
 
-{% block title %}Vote{% endblock %}
+{% block title %}Санал өгөх{% endblock %}
 
-{% block main %}
-<div class="row">
+{% block content %}
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+        </head>
+
+<div id="wrapper">
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Сургалт: <span>Сургалт хүсэх</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="{% url 'news-homepage' %}">Нүүр хуудас</a> \ Сургалт хүсэх</div></div>
+          </div>
+        </div>
+      </div>
+<div class="row" style="padding-top: 50px;">
     <div class="col-lg-8 col-lg-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Cast Your Vote</h3>
+                <h3 class="panel-title">Саналаа өгнө үү</h3>
             </div>
 
             <div class="panel-body">
@@ -43,8 +58,12 @@
                             <hr />
 
                             <button type="submit" class="btn btn-info">
-                                Submit
+                                Илгээх
+                               
                             </button>
+                            <div class="text-right" style="float: right;">
+                                     <button class="btn btn-info"> <a href="{% url 'poll:poll' %}" style="color: white;">Буцах</a></button>
+                            </div>
                         </form>
                     </div>
                 </div>

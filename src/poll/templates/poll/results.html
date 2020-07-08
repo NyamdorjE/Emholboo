@@ -1,13 +1,22 @@
 {% extends "poll/base.html" %}
 
-{% block title %}Results{% endblock %}
+{% block title %}Үр дүн{% endblock %}
 
-{% block main %}
-<div class="row">
+{% block content %}
+<div id="wrapper">
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Санал асуулга: <span>Үр дүн</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="{% url 'news-homepage' %}">Санал асуулга</a> \ Санал үр дүн</div></div>
+          </div>
+        </div>
+      </div>
+<div class="row" style="padding-top: 50px;">
     <div class="col-lg-8 col-lg-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Poll Result</h3>
+                <h3 class="panel-title">Үр дүн</h3>
             </div>
 
             <div class="panel-body">
@@ -19,11 +28,13 @@
                 <li class="list-group-item">{{ poll.option_two }} &mdash; <strong>{{ poll.option_two_count }}</strong></li>
                 <li class="list-group-item">{{ poll.option_three }} &mdash; <strong>{{ poll.option_three_count }}</strong></li>
             </ul>
-
-            <div class="panel-footer">
-                Total &mdash; <strong>{{ poll.total }}</strong>
+     
+            <div class="panel-footer"> 
+                    Нийт &mdash; <strong>{{ poll.total }}</strong>          
+                <div class="text-right" style="float: right;">
+                     <button class="btn btn-info"> <a href="{% url 'poll:poll' %}" style="color: white;">Буцах</a></button>
+                </div>
             </div>
-
         </div>
     </div>
 </div>

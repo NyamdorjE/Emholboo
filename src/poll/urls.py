@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from src.poll import views as poll_views
+app_name = 'poll'
 
 urlpatterns = [
     path('poll/', poll_views.home, name='poll'),

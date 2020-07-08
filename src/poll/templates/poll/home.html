@@ -1,13 +1,21 @@
-{% extends "poll/base.html" %}
+{% extends "news/index_2.html" %}
 
-{% block title %}Homepage{% endblock %}
 
-{% block main %}
-<div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="panel panel-default">
+{% block content %}
+<div id="wrapper">
+      <div class="page-in">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pull-left"><div class="page-in-name">Санал асуулга: <span>Санал өгөх</span></div></div>
+            <div class="col-lg-6 pull-right"><div class="page-in-bread"><span>Та энд байна:</span> <a href="{% url 'news-homepage' %}">Санал асуулга</a> \ Санал өгөх</div></div>
+          </div>
+        </div>
+      </div>
+<div class="row" style="padding-top: 50px;">
+    <div class="col-lg-8 col-lg-offset-2 ">
+        <div class="panel panel-default ">
             <div class="panel-heading">
-                <h3 class="panel-title">Available Polls</h3>
+                <h3 class="panel-title">Санал асуулга</h3>
             </div>
                 
             <ul class="list-group">
@@ -15,8 +23,8 @@
                 <li class="list-group-item">
                     <strong>{{ poll.question }}</strong>
                     <span class="pull-right">
-                        <a href="{% url 'vote' poll.id %}" class="btn btn-info btn-xs">Vote</a> &nbsp;
-                        <a href="{% url 'results' poll.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                        <a href="{% url 'poll:vote' poll.id %}" class="btn btn-info btn-xs">Санал өгөх</a> &nbsp;
+                        
                     </span>
                 </li>
                 {% endfor %}
