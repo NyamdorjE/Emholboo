@@ -274,11 +274,11 @@
               <div class="promo-text-footer">Хэрэгтэй холбоосууд </div>
                 <ul class="list ">
                   <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;"></a></li>
-                  <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;">Нүүр хуудас</a></li>
-                  <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px; color: #5f5454;">Бидний тухай</a></li>
-                  <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;">Мэдээ мэдээлэл</a></li>
-                  <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;">Сургалт</a></li>
-                  <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;">Холбоо барих</a></li>
+                  <li class="list" style="padding-bottom: 8px;"><a href="{% url 'news-homepage'%}" style="padding-bottom: 10px;color: #5f5454;">Нүүр хуудас</a></li>
+                  <li class="list" style="padding-bottom: 8px;"><a href="{% url 'news-news-list' %}" style="padding-bottom: 10px;color: #5f5454;">Мэдээ мэдээлэл</a></li>
+                  <li class="list" style="padding-bottom: 8px;"><a href="{% url 'contact' %}" style="padding-bottom: 10px; color: #5f5454;">Сургалт хүсэх</a></li>         
+                  <li class="list" style="padding-bottom: 8px;"><a href="{% url 'courses:home'%}" style="padding-bottom: 10px;color: #5f5454;">Сургалт</a></li>
+                  <li class="list" style="padding-bottom: 8px;"><a href="{% url 'request' %}" style="padding-bottom: 10px;color: #5f5454;">Холбоо барих</a></li>
                  
                 </ul>
               </div>
@@ -310,11 +310,11 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-right">
                 <div class="foot_menu">
                   <ul>
-                    <li><a href="./index.html">Нүүр хуудас</a></li>
-                    <li><a href="./about.html">Бидний тухай</a></li>
-                    <li><a href="./blog_classic_sidebar.html">Мэдээ</a></li>
-                    <li><a href="./services.html">Гишүүнчлэл</a></li>
-                    <li><a href="#" target="_blank">Холбоо барих</a></li>
+                    <li><a href="{% url 'news-homepage'%}">Нүүр хуудас</a></li>
+                    <li><a href="{% url 'news-about-page' %}">Бидний тухай</a></li>
+                    <li><a href="{% url 'news-news-list' %}">Мэдээ</a></li>
+                    <li><a href="{% url 'accounts:sign_up' %}">Гишүүнчлэл</a></li>
+                    <li><a href="{% url 'request' %}" target="_blank">Холбоо барих</a></li>
                   </ul>
                 </div>
               </div>
