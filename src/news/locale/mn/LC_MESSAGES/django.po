@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-16 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/news/apps.py:7
+msgid "News"
+msgstr "Мэдээ"
+
+#: src/news/models.py:12 src/news/models.py:37
+msgid "Title"
+msgstr "Гарчиг"
+
+#: src/news/models.py:35
+msgid "Category"
+msgstr "Ангиллал"
+
+#: src/news/models.py:39
+msgid "News Slug"
+msgstr "Мэдээний нөмрөг"
+
+#: src/news/models.py:40
+msgid "Created by"
+msgstr "Үүсгэсэн"
+
+#: src/news/models.py:41
+msgid "Content"
+msgstr "Контент"
+
+#: src/news/models.py:45
+msgid "Created on"
+msgstr "Хэзээ үүсгэсэн"
+
+#: src/news/models.py:47
+msgid "Updated on"
+msgstr "Хэзээ зассан"
+
+#: src/news/templates/news/homepage.html:24
+#: src/news/templates/news/homepage.html:172
+msgid "Үйл ажиллагаа"
+msgstr "Activities"
+
+#: src/news/templates/news/homepage.html:37
+msgid "Гишүүд"
+msgstr "Members"
+
+#: src/news/templates/news/homepage.html:46
+#: src/news/templates/news/homepage.html:77
+#: src/news/templates/news/homepage.html:174
+#: src/news/templates/news/index_2.html:93
+#: src/news/templates/news/index_2.html:96
+msgid "Мэдээ мэдээлэл"
+msgstr "News and information"
+
+#: src/news/templates/news/homepage.html:55
+#: src/news/templates/news/index_2.html:88
+msgid "Хууль тогтоомж"
+msgstr "Legislation"
+
+#: src/news/templates/news/homepage.html:64
+#: src/news/templates/news/index_2.html:98
+msgid "Судалгаа"
+msgstr "Research"
+
+#: src/news/templates/news/homepage.html:117
+msgid "Цааш үзэх"
+msgstr "Read more"
+
+#: src/news/templates/news/homepage.html:165
+#: src/news/templates/news/index_2.html:83
+#: src/news/templates/news/index_2.html:316
+msgid "Бидний тухай"
+msgstr "About us"
+
+#: src/news/templates/news/homepage.html:171
+msgid "Нийгэмд чиглэсэн аян"
+msgstr "Social compaign"
+
+#: src/news/templates/news/homepage.html:173
+msgid "Урлаг  & спорт"
+msgstr "Art & Sport"
+
+#: src/news/templates/news/homepage.html:180
+#: src/news/templates/news/index_2.html:95
+msgid "Онцлох мэдээ"
+msgstr "Featured news"
+
+#: src/news/templates/news/homepage.html:190
+msgid "Цааш унших"
+msgstr "Read more"
+
+#: src/news/templates/news/homepage.html:216
+msgid "Үзүүлэлт"
+msgstr "Specifications"
+
+#: src/news/templates/news/homepage.html:229
+msgid "Гишүүн байгууллагууд"
+msgstr ""
+
+#: src/news/templates/news/homepage.html:235
+msgid "Гишүүдийн тоо"
+msgstr "Member organizations"
+
+#: src/news/templates/news/homepage.html:241
+msgid "Хийгдсэн үйл ажиллагаа"
+msgstr "Activities performed"
+
+#: src/news/templates/news/homepage.html:247
+msgid "Тэкст"
+msgstr "Text"
+
+#: src/news/templates/news/homepage.html:259
+msgid "Харилцагч байгууллагууд"
+msgstr "Customer organizations"
+
+#: src/news/templates/news/index_2.html:81
+#: src/news/templates/news/index_2.html:315
+msgid "Нүүр хуудас"
+msgstr "Home page"
+
+#: src/news/templates/news/index_2.html:85
+msgid "Компаны тухай"
+msgstr "About our company"
+
+#: src/news/templates/news/index_2.html:86
+msgid "Түүхэн замнал"
+msgstr "Timeline"
+
+#: src/news/templates/news/index_2.html:97
+msgid "Урлаг, Спорт"
+msgstr "Art, sport"
+
+#: src/news/templates/news/index_2.html:102
+msgid "Сургалт"
+msgstr "Course"
+
+#: src/news/templates/news/index_2.html:104
+msgid "Сургалт хүсэх"
+msgstr "Course whislist"
+
+#: src/news/templates/news/index_2.html:105
+msgid "Санал асуулга"
+msgstr "Poll"
+
+#: src/news/templates/news/index_2.html:109
+#: src/news/templates/news/index_2.html:259
+#: src/news/templates/news/index_2.html:319
+msgid "Холбоо барих"
+msgstr "Contact us"
+
+#: src/news/templates/news/index_2.html:111
+msgid "Хэрэглэгч"
+msgstr "User"
+
+#: src/news/templates/news/index_2.html:115
+msgid "Нууц үг солих"
+msgstr "Change password"
+
+#: src/news/templates/news/index_2.html:118
+msgid "Нэр солих"
+msgstr "Change name"
+
+#: src/news/templates/news/index_2.html:121
+msgid "Имайл хаяг солих"
+msgstr "Change email address"
+
+#: src/news/templates/news/index_2.html:124
+msgid "Системээс гарах"
+msgstr "Log-out"
+
+#: src/news/templates/news/index_2.html:128
+#: src/news/templates/news/index_2.html:215
+msgid "Нэвтрэх"
+msgstr "Log-in"
+
+#: src/news/templates/news/index_2.html:131
+msgid "Гишүүнээр бүртгүүлэх"
+msgstr "Register as a member"
+
+#: src/news/templates/news/index_2.html:213
+msgid " Тавтай морилно уу."
+msgstr "Welcome"
+
+#: src/news/templates/news/index_2.html:261
+msgid " Хаяг:"
+msgstr "Address:"
+
+#: src/news/templates/news/index_2.html:262
+msgid "Утас:"
+msgstr "Phone:"
+
+#: src/news/templates/news/index_2.html:263
+msgid "E-mail:"
+msgstr "E-mail:"
+
+#: src/news/templates/news/index_2.html:276
+msgid "Хэрэгтэй холбоосууд"
+msgstr "Useful links"
+
+#: src/news/templates/news/index_2.html:288
+msgid "Сургалтууд"
+msgstr "Courses"
+
+#: src/news/templates/news/index_2.html:317
+msgid "Мэдээ"
+msgstr "News"
+
+#: src/news/templates/news/index_2.html:318
+msgid "Гишүүнчлэл"
+msgstr "Members"

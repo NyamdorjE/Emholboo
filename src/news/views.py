@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponseRedirect
+from django.utils.translation import gettext as _
 
 
 # Create your views here.

@@ -1,6 +1,8 @@
 {% extends 'news/index_2.html' %}
 {% load static %}
 {% load humanize %}
+{% load i18n %}
+
 {% block content %}
 
   <script type="text/javascript">
@@ -19,7 +21,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="promo-block">
-          <div class="promo-text">Үйл ажиллагаа
+          <div class="promo-text">{% trans 'Үйл ажиллагаа' %}
         </div>
           <div class="center-line"></div>
         </div>
@@ -32,7 +34,7 @@
         <div class="hi-icon-effect marg50">
         <a href="{% url 'accounts:sign_up' %}" style="text-decoration: none; color:black;">
           <div class="hi-icon icon-user"></div>
-          <div class="service-name">Гишүүд</div>
+          <div class="service-name">{% trans 'Гишүүд' %} </div>
           <div class="service-text">Suspendisse velit ticol sodales, viverra sigirton vitae, accumsan orci mauris nec ipsum</div>
         </a>
         </div>
@@ -41,7 +43,7 @@
         <div class="hi-icon-effect marg50">
         <a href="{% url 'news-news-list' %}" style="text-decoration: none; color:black;">
           <div class="hi-icon icon-note"></div>
-          <div class="service-name">Мэдээ мэдээлэл</div>
+          <div class="service-name">{% trans 'Мэдээ мэдээлэл' %}</div>
           <div class="service-text">Suspendisse velit ticol sodales, viverra sigirton vitae, accumsan orci mauris nec ipsum</div>
         </a>
        </div>
@@ -50,7 +52,7 @@
         <div class="hi-icon-effect marg50">
         <a href="{% url 'research-law-list' %}" style="text-decoration: none; color:black;">
           <div class="hi-icon icon-params"></div>
-          <div class="service-name">Хууль тогтоомж</div>
+          <div class="service-name">{% trans 'Хууль тогтоомж' %}</div>
           <div class="service-text">Suspendisse velit ticol sodales, viverra sigirton vitae, accumsan orci mauris nec ipsum</div>
         </a>
        </div>
@@ -59,7 +61,7 @@
       <a href="{% url 'research-research-list' %}" style="text-decoration: none; color:black;">
         <div class="hi-icon-effect marg50">
           <div class="hi-icon icon-globe"></div>
-          <div class="service-name">Судалгаа</div>
+          <div class="service-name">{% trans 'Судалгаа' %}</div>
           <div class="service-text">Suspendisse velit ticol sodales, viverra sigirton vitae, accumsan orci mauris nec ipsum</div>
       </a>
         </div>
@@ -72,7 +74,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="promo-block">
-            <div class="promo-text">Мэдээ мэдээлэл </div>
+            <div class="promo-text">{% trans 'Мэдээ мэдээлэл'%} </div>
             <div class="center-line"></div>
           </div>
           <div class="promo-paragraph">Pellentesque luctus ac lorem id luctus. Aenean sagittis magna sit amet purus vehicsula. Tristique nunc a felis ultrices phasellus vitae ultrices lectus, eget posuere est. Win none ipsum suspendisse eu velit sodales, viverra lorem vitae, accumsan orci sagittis</div>
@@ -112,7 +114,7 @@
         </div>
         <div class="col-lg-12">
           <div class="button-center"><a href="{% url 'news-news-list' %}" >
-          <button type="button" class="btn btn-secondary">Цааш үзэх</button>
+          <button type="button" class="btn btn-secondary">{% trans 'Цааш үзэх' %}</button>
           </a></div>
         </div>
       </div>  
@@ -160,22 +162,22 @@
     <div class="row animated-area">
       <div class="col-lg-6 col-md-6 col-sm-12 animated" data-animation-delay="0.3s" data-animation="fadeInLeft">
         <div class="promo-block">
-          <div class="promo-text">Бидний тухай</div>
+          <div class="promo-text">{% trans 'Бидний тухай'%}</div>
           <div class="center-line"></div>
         </div>
         <div class="marg50">
           <p class="about-text"><span class="first-letter">C</span>hasellus vitae ultrices lectus, eget posuere est. In non mi ipsum. Suspendisse velit ticol sodales, viverra lorem vitae, accumsan orci. Mauris nec ipsum tempus, laorei lorem vel, sodales ante. Praesent quis interdum sapien, et pulvinar leo. Vivamus mattis fermentum eros vel ullamcorper. Integer egestas metus vitae mi molestie, ac euismod quam vestibulum. Pellentesque ac molestie eros. Praesent at nunc vel est tempor aliqua.</p>
           <ul class="list-check">
-            <li><i class="icon-ok"></i> Нийгэмд чиглэсэн аян</li>
-            <li><i class="icon-ok"></i> Үйл ажиллагаа</li>
-            <li><i class="icon-ok"></i> Урлаг  & спорт</li>
-            <li><i class="icon-ok"></i> Мэдээ мэдээлэл</li>
+            <li><i class="icon-ok"></i> {% trans 'Нийгэмд чиглэсэн аян'%}</li>
+            <li><i class="icon-ok"></i> {% trans 'Үйл ажиллагаа' %}</li>
+            <li><i class="icon-ok"></i> {% trans 'Урлаг  & спорт' %}</li>
+            <li><i class="icon-ok"></i> {% trans 'Мэдээ мэдээлэл' %}</li>
           </ul>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 animated" data-animation-delay="0.3s" data-animation="fadeInRight">
         <div class="promo-block">
-          <div class="promo-text">Онцлох мэдээ</div>
+          <div class="promo-text">{% trans 'Онцлох мэдээ' %}</div>
           <div class="center-line"></div>
         </div>
         <div class="row marg50">
@@ -185,7 +187,7 @@
               <div class="blog-images">
                 <div class="view view-fifth">
                   <img src="{% if news.image %}{{news.image.url}}{% endif %}" alt="" />
-                  <div class="mask"><a href="#" class="btn-blog">Цааш унших</a></div>
+                  <div class="mask"><a href="#" class="btn-blog">{% trans 'Цааш унших' %}</a></div>
                 </div>
               </div>
                   <div class="row">    
@@ -211,7 +213,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="promo-block">
-          <div class="promo-text"> Үзүүлэлт</div>
+          <div class="promo-text"> {% trans 'Үзүүлэлт'%}</div>
           <div class="center-line"></div>
         </div>
       </div>
@@ -224,25 +226,25 @@
   <div class="counter col_fourth">
       <div class="fact-icon"><i class="icon-globe"></i></div>
     <h2 class="timer count-title count-number" data-to="300" data-speed="1500"></h2>
-    <p class="count-text ">Гишүүн байгууллагууд</p>
+    <p class="count-text ">{% trans 'Гишүүн байгууллагууд' %}</p>
   </div>
 
   <div class="counter col_fourth">
     <div class="fact-icon"><i class="icon-user"></i></div>
     <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
-    <p class="count-text ">Гишүүдийн тоо</p>
+    <p class="count-text ">{% trans 'Гишүүдийн тоо' %}</p>
   </div>
 
   <div class="counter col_fourth">
       <div class="fact-icon"><i class="icon-thumbs-up"></i></div>
     <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
-    <p class="count-text ">Хийгдсэн үйл ажиллагаа</p>
+    <p class="count-text ">{% trans 'Хийгдсэн үйл ажиллагаа' %}</p>
   </div>
 
   <div class="counter col_fourth end">
      <div class="fact-icon"><i class="icon-calendar"></i></div>
     <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-    <p class="count-text ">Тэкст</p>
+    <p class="count-text ">{% trans 'Тэкст' %} </p>
   </div>
 </div>
 
@@ -254,7 +256,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="promo-block">
-          <div class="promo-text">Харилцагч байгууллагууд</div>
+          <div class="promo-text">{% trans 'Харилцагч байгууллагууд' %}</div>
           <div class="center-line"></div>
         </div>
       </div>

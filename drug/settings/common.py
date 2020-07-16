@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'haystack',
     'elasticsearch',
     'bootstrap4',
+    'django_translation_flags',
 
 
 ]
@@ -81,12 +83,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+
 
 
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'drug.wsgi.application'
 
@@ -144,6 +149,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, "src", "base", "locale")]
+
+LANGUAGES = [
+    ('mn', _('Mongolia')),
+    ('en', _('English')),
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -152,12 +164,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
 
+
+# Media files (Зураг, Video, гэм мэт)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# From template
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-ACCOUNT_ACTIVATION_DAYS = 7
+# Account
+ACCOUNT_ACTIVATION_DAYS = 60
 REGISTRATION_AUTO_LOGIN = True
 
 REGISTRATION_OPEN = True
@@ -165,7 +181,7 @@ REGISTRATION_OPEN = True
 
 SITE_ID = 1
 
-
+# Login
 ENABLE_USER_ACTIVATION = True
 DISABLE_USERNAME = False
 LOGIN_VIA_EMAIL = False
@@ -174,15 +190,11 @@ LOGIN_REDIRECT_URL = '/news'
 LOGIN_URL = 'accounts:log_in'
 USE_REMEMBER_ME = False
 
+# Email verf
 RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = True
 EMAIL_ACTIVATION_AFTER_CHANGING = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-
-
-SIGN_UP_FIELDS = ['username',  'email', 'password1', 'password2']
-if DISABLE_USERNAME:
-    SIGN_UP_FIELDS = ['email', 'password1', 'password2']
 
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -190,3 +202,9 @@ EMAIL_HOST_USER = 'elastinex@gmail.com'
 EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+
+# Sign up Field
+SIGN_UP_FIELDS = ['username',  'email', 'password1', 'password2']
+if DISABLE_USERNAME:
+    SIGN_UP_FIELDS = ['email', 'password1', 'password2']

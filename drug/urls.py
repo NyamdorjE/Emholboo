@@ -35,6 +35,10 @@ urlpatterns = [
     path('contact/', contact.contact, name='contact'),
     path('request/', request.request, name='request'),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    path('i18n/', include('django_translation_flags.urls')),
+
+
 
     # path('search', search, name='blog-search'),
 

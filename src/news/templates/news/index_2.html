@@ -1,5 +1,7 @@
 {% load static %}
 {% load humanize %}
+{% load i18n %}
+
 {% load widget_tweaks %}
 
 {% load i18n %}
@@ -76,37 +78,37 @@
                 	{% with request.resolver_match.url_name as url_name %}
 
                       <ul class="dl-menu">
-                        <li class="active" ><a style="padding-right: 15px;" href="{% url 'news-homepage' %}">Нүүр хуудас</a></li>
+                        <li class="active" ><a style="padding-right: 15px;" href="{% url 'news-homepage' %}">{% trans 'Нүүр хуудас' %}</a></li>
 
-                        <li class="dropdown active"><a href="#">Бидний тухай</a>
+                        <li class="dropdown active"><a href="#">{% trans 'Бидний тухай' %}</a>
                           <ul class="dl-submenu">
-                            <li><a href="{% url 'news-about-page' %}">Компаны тухай</a></li>
-                            <li><a href="{% url 'news-time-line' %}">Түүхэн замнал</a></li>
+                            <li><a href="{% url 'news-about-page' %}">{% trans 'Компаны тухай' %}</a></li>
+                            <li><a href="{% url 'news-time-line' %}">{% trans 'Түүхэн замнал' %}</a></li>
                             <li>
-                              <a href="{% url 'research-law-list' %}">Хууль тогтоомж</a>  
+                              <a href="{% url 'research-law-list' %}">{% trans 'Хууль тогтоомж' %}</a>  
                             </li>
                           </ul>
                         </li>
                         
-                        <li class="dropdown active" ><a href="#">Мэдээ мэдээлэл</a>
+                        <li class="dropdown active" ><a href="#">{% trans 'Мэдээ мэдээлэл' %}</a>
                           <ul class="dl-submenu">
-                            <li><a href="{% url 'news-special-news' %}">Онцлох мэдээ</a></li>
-                            <li><a href="{% url 'news-news-list' %}">Мэдээ мэдээлэл</a></li>
-                            <li><a href="{% url 'news-sport-list' %}">Урлаг, Спорт</a></li>
-                            <li><a href="{% url 'research-research-list' %}"> Судалгаа</a></li>
+                            <li><a href="{% url 'news-special-news' %}">{% trans 'Онцлох мэдээ' %}</a></li>
+                            <li><a href="{% url 'news-news-list' %}">{% trans 'Мэдээ мэдээлэл' %}</a></li>
+                            <li><a href="{% url 'news-sport-list' %}">{% trans 'Урлаг, Спорт' %}</a></li>
+                            <li><a href="{% url 'research-research-list' %}"> {% trans 'Судалгаа' %}</a></li>
                           </ul>
                         </li>
 
-                        <li><a href="{% url 'courses:home'%}">Сургалт</a>
+                        <li><a href="{% url 'courses:home'%}">{% trans 'Сургалт' %}</a>
                         <ul class="dl-submenu">
-                            <li><a href="{% url 'contact' %}">Сургалт хүсэх</a></li>
-                            <li><a href="{% url 'poll:poll'%}">Санал асуулга </a></li>
+                            <li><a href="{% url 'contact' %}">{% trans 'Сургалт хүсэх' %}</a></li>
+                            <li><a href="{% url 'poll:poll'%}">{% trans 'Санал асуулга' %} </a></li>
                        </ul>
                         </li>
 
-                        <li><a href="{% url 'request' %}">Холбоо барих</a></li>
+                        <li><a href="{% url 'request' %}">{% trans 'Холбоо барих' %}</a></li>
                         
-                        <li><a href="#">Хэрэглэгч</a>
+                        <li><a href="#">{% trans 'Хэрэглэгч' %}</a>
                           <ul class="dl-submenu">
                             {% if request.user.is_authenticated %}
                             <li class="nav-item">
@@ -134,8 +136,25 @@
                           <ul class="navbar-nav mr-auto">
            
                           </ul>
-							{% endwith %} 
+                     
+                    <li class="menu-language">
+                  <form action="/i18n/setlang/" method="post" id="langform" class="langform">
+                                         {% csrf_token %}
+                   {% if request.LANGUAGE_CODE == 'mn' %}
+                       <input type="hidden" name="language" value="en"/>
+                          <a class="lan" href="#" onclick="">{{request.LANGUAGE_CODE}}
+                      <img onclick="document.getElementById('langform').submit();" src="{% static 'base/assets/images/mn.png' %}">
+                             </a>
+                             {% else %}
+                              <input type="hidden" name="language" value="mn"/>
+                                     <a class="lan" href="#" >{{request.LANGUAGE_CODE}}
+                           <img onclick="document.getElementById('langform').submit();" src="{% static 'base/assets/images/en.png' %}">
+                           </a>
+                              {% endif %}
+                                       </form>
+                            </li>
 
+                 {% endwith %} 
 
                       </div>
                       </ul>
@@ -208,9 +227,9 @@
                     
                     <li><a href='#'><i class="fa fa-avatar"></i>
                    {% if request.user.is_authenticated %}
-                          Тавтай морилно уу. {{ user.username }}
+                         {% trans ' Тавтай морилно уу.'%} {{ user.username }}
                     {% else %}
-                        <p>Тавтай морилно уу, Нэвтрэх .</p>
+                        <p>{% trans 'Нэвтрэх'%} .</p>
                     {% endif %}
                     </a></li>
                     <li id="search-btn"><a href="#"><i class="icon-user"></i></a></li>
@@ -254,11 +273,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4">
-              <div class="promo-text-footer">Холбоо барих </div>
+              <div class="promo-text-footer">{% trans 'Холбоо барих'%} </div>
               <ul class="contact-footer">
-                <li><i class="icon-location"></i> Хаяг: Сонгинохайрхан дүүрэг, 29-р хороо Үйлдвэрчний эвлэлийн гудамж, Улаанбаатар, Монгол Улс </li>
-                <li><i class="icon-mobile"></i> Утас:  +(976) 9909-8752</li>
-                <li><i class="icon-mail"></i> E-mail: www.mezbneh@gmail</li>
+                <li><i class="icon-location"></i>{% trans ' Хаяг:'%} Сонгинохайрхан дүүрэг, 29-р хороо Үйлдвэрчний эвлэлийн гудамж, Улаанбаатар, Монгол Улс </li>
+                <li><i class="icon-mobile"></i> {% trans 'Утас:'%}  +(976) 9909-8752</li>
+                <li><i class="icon-mail"></i> {% trans 'E-mail:'%} www.mezbneh@gmail</li>
               </ul> 
                <ul class="soc-footer">
                 <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
@@ -271,7 +290,7 @@
               </ul>       
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="promo-text-footer">Хэрэгтэй холбоосууд </div>
+              <div class="promo-text-footer">{% trans 'Хэрэгтэй холбоосууд'%} </div>
                 <ul class="list ">
                   <li class="list" style="padding-bottom: 8px;"><a href="#" style="padding-bottom: 10px;color: #5f5454;"></a></li>
                   <li class="list" style="padding-bottom: 8px;"><a href="{% url 'news-homepage'%}" style="padding-bottom: 10px;color: #5f5454;">Нүүр хуудас</a></li>
@@ -283,7 +302,7 @@
                 </ul>
               </div>
             <div class="col-lg-5 col-md-5 col-sm-5">
-              <div class="promo-text-footer"> Сургалтууд</div>
+              <div class="promo-text-footer"> {% trans 'Сургалтууд' %}</div>
                 {% for cat in category|slice:'0:2' %}
                <div class="row">
                 <div class="col-md-4">
@@ -310,11 +329,11 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-right">
                 <div class="foot_menu">
                   <ul>
-                    <li><a href="{% url 'news-homepage'%}">Нүүр хуудас</a></li>
-                    <li><a href="{% url 'news-about-page' %}">Бидний тухай</a></li>
-                    <li><a href="{% url 'news-news-list' %}">Мэдээ</a></li>
-                    <li><a href="{% url 'accounts:sign_up' %}">Гишүүнчлэл</a></li>
-                    <li><a href="{% url 'request' %}" target="_blank">Холбоо барих</a></li>
+                    <li><a href="{% url 'news-homepage'%}">{% trans 'Нүүр хуудас' %}</a></li>
+                    <li><a href="{% url 'news-about-page' %}">{% trans 'Бидний тухай' %}</a></li>
+                    <li><a href="{% url 'news-news-list' %}">{% trans 'Мэдээ' %}</a></li>
+                    <li><a href="{% url 'accounts:sign_up' %}">{% trans 'Гишүүнчлэл' %}</a></li>
+                    <li><a href="{% url 'request' %}" target="_blank">{% trans 'Холбоо барих' %}</a></li>
                   </ul>
                 </div>
               </div>

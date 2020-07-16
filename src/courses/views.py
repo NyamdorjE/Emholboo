@@ -5,6 +5,7 @@ from src.courses.models import Subject, Lesson, Course, CourseCategory
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your views here.

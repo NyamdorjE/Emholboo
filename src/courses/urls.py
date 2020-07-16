@@ -1,5 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
+from django.utils.translation import gettext_lazy as _
+
 from django.contrib.auth.decorators import login_required
 
 from src.courses.views import HomeView, AboutView, CourseListView, CourseDetailView, LessonDetailView, SearchView, SuggestView
